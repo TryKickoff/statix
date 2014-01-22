@@ -1,0 +1,63 @@
+/* ==========================================================================
+   Site dependencies
+   ========================================================================== */
+
+/*
+   Core variables
+   * Edit your color palette and app vars before your begin
+   ========================================================================== */
+@import "colour-palette";
+@import "variables";
+
+
+/*
+   Mixins, helpers and functions
+   * Most CSS3 vendor prefixed items have a mixin.
+   * See mixins/css3.scss for the full list
+   ========================================================================== */
+@import "helpers/helpers";
+@import "functions/functions";
+@import "mixins/mixins";
+
+
+/*
+   CSS Framework
+   * Edit these
+   ========================================================================== */
+@import "normalize"; // CSS reset
+
+/*
+   Grid System
+   * Default: Choreographic Grid. Switch out for your own if you need
+   ========================================================================== */
+@import "choreographic-grid";
+
+/* Framework styles */
+@import "typography";
+@import "forms";
+@import "tables";
+@import "code";
+@import "buttons";
+@import "components";
+
+
+/*
+   Your styles
+   ========================================================================== */
+@import "global";
+@import "partials/masthead";
+@import "partials/footer";
+
+/* Examples */
+//@import "pages/home";
+
+
+/*
+   Utility classes
+   * Has to be last to override when necessary
+   ========================================================================== */
+@import "utilities";
+@import "responsive-utilities";
+
+/* Print styles */
+@import "print";

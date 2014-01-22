@@ -1,0 +1,76 @@
+/* ==========================================================================
+   Utilities
+   Non-semantic helper classes
+   ========================================================================== */
+
+// Clearfix
+.clearfix {
+	zoom: 1;
+
+	&:before,
+	&:after {
+		display: table;
+		content: " ";
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+
+// For image replacement
+.ir {
+	background-color: transparent;
+	background-repeat: no-repeat;
+	border: 0;
+	direction: ltr;
+	display: block;
+	overflow: hidden;
+	text-align: left;
+	text-indent: -999em;
+}
+
+.ir br {
+	display: none;
+}
+
+
+// Hide from both screenreaders and browsers: h5bp.com/u
+.is-hidden {
+	display: none !important;
+	visibility: hidden !important;
+}
+.is-shown { display: block; }
+
+// Hide only visually, but have it available for screenreaders: h5bp.com/v
+.is-visuallyHidden {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+
+	// Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: h5bp.com/p
+	&.focusable:active,
+	&.focusable:focus {
+		clip: auto;
+		height: auto;
+		margin: 0;
+		overflow: visible;
+		position: static;
+		width: auto;
+	}
+}
+
+// Hide visually and from screenreaders, but maintain layout
+.is-invisible { visibility: hidden; }
+
+.l-floatLleft		{ float:left; }
+.l-floatRight		{ float:right; }
+.l-clear			{ clear:both; float:none; }
+
+.l-mb0 { margin-bottom: 0 !important;}
+.l-mt0 { margin-top:    0 !important;}
