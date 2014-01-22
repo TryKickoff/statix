@@ -1,19 +1,19 @@
 {
-  "name": "kickoff",
-  "title": "Kickoff",
-  "description": "A lightweight front-end framework for creating scalable, responsive sites",
+  "name": "kickoff-statix",
+  "title": "Kickoff Statix",
+  "description": "Making the process of creating static HTML templates even quicker and easier.",
   "version": "3.3.2",
-  "homepage": "http://tmwagency.github.io/kickoff/",
+  "homepage": "https://github.com/tmwagency/kickoff-statix",
   "author": {
-    "name": "Zander Martineau",
-    "url": "http://martineau.tv"
+    "name": "Ashley Nolan",
+    "url": "http://ashleynolan.co.uk"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/tmwagency/kickoff.git"
   },
   "bugs": {
-    "url": "https://github.com/tmwagency/kickoff/issues"
+    "url": "https://github.com/tmwagency/kickoff-statix/issues"
   },
   "license": "MIT",
   "engines": {
