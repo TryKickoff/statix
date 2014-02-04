@@ -66,8 +66,8 @@ module.exports = function (grunt) {
 					sourcemap: true
 				},
 				files: {
-					'css/temp/<%=pkg.name%>.sass.css': 'scss/kickoff.scss',
-					'css/temp/<%=pkg.name%>-old-ie.sass.css': 'scss/kickoff-old-ie.scss'
+					'css/temp/kickoff.sass.css': 'scss/kickoff.scss',
+					'css/temp/kickoff-old-ie.sass.css': 'scss/kickoff-old-ie.scss'
 				}
 			},
 			production: {
@@ -76,8 +76,8 @@ module.exports = function (grunt) {
 					precision : 8
 				},
 				files: {
-					'css/temp/<%=pkg.name%>.sass.css': 'scss/kickoff.scss',
-					'css/temp/<%=pkg.name%>-old-ie.sass.css': 'scss/kickoff-old-ie.scss'
+					'css/temp/kickoff.sass.css': 'scss/kickoff.scss',
+					'css/temp/kickoff-old-ie.sass.css': 'scss/kickoff-old-ie.scss'
 				}
 			},
 			styleguide: {
@@ -112,7 +112,7 @@ module.exports = function (grunt) {
 				sourceMap: distDir + jsFile + '.map',
 
 				// sourceMappingURL: @string. The string that is printed to the final file
-				sourceMappingURL: '/' + jsFile +'.map',
+				sourceMappingURL: jsFile +'.map',
 
 				// sourceMapRoot: @string. The location where your source files can be found. This sets the sourceRoot field in the source map.
 				//sourceMapRoot: '../../'
@@ -142,7 +142,7 @@ module.exports = function (grunt) {
 				files: ['scss/**/*.scss'],
 				//tasks: ['sass:dev', 'sass:styleguide'],
 				//tasks: ['sass:dev', 'sass:styleguide', 'autoprefixer:dist', 'csso']
-				tasks: ['sass:dev', 'sass:styleguide', 'autoprefixer:dist']
+				tasks: ['sass:dev', 'sass:styleguide', 'autoprefixer:dist', 'copy:css']
 			},
 
 			js: {
@@ -151,7 +151,7 @@ module.exports = function (grunt) {
 					'js/*.js',
 					'js/libs/**/*.js'
 				],
-				tasks: ['uglify']
+				tasks: ['uglify', 'copy:js']
 			},
 
 			assemble : {
