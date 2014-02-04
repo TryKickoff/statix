@@ -13,7 +13,7 @@ Should you wish to rip out the CSS (or SCSS) and JS and replace it with a struct
 
 ### Credits
 
-Developed by [Ashley Nolan](https://github.com/dragongraphics) & [Zander Martineau](https://github.com/mrmartineau).
+Developed by [Ashley Nolan](https://github.com/AshNolan_) & [Zander Martineau](https://github.com/mrmartineau).
 
 Uses the static site generator [Assemble](https://github.com/assemble/assemble), which is developed and maintained by [Jon Schlinkert](https://github.com/jonschlinkert) and [Brian Woodward](github/doowb).
 

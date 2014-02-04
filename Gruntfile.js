@@ -345,6 +345,9 @@ module.exports = function (grunt) {
 	 * A task for for a static server with a watch
 	 * run connect and watch
 	 */
-	grunt.registerTask("serve", ["connect", "copy", "assemble", "watch"]);
+	grunt.registerTask("serve", ["connect",
+								"sass:dev", "sass:styleguide", "autoprefixer:dist",
+								"uglify",
+								"copy", "assemble", "watch"]);
 
 };
