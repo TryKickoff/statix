@@ -165,7 +165,7 @@ module.exports = function (grunt) {
 			livereload: {
 				options: { livereload: true },
 				files: [
-					'css/*.css'
+					'dist/css/*.css'
 				]
 			}
 		},
@@ -227,6 +227,12 @@ module.exports = function (grunt) {
 			}
 		},
 
+
+		/**
+		 * Assemble
+		 * http://assemble.io/
+		 * Static site generator
+		 */
 		assemble: {
 			options: {
 				data: 'src/**/*.{json,yml}',
@@ -250,7 +256,11 @@ module.exports = function (grunt) {
 			}
 		},
 
-
+		/**
+		 * Copy
+		 * https://github.com/gruntjs/grunt-contrib-copy
+		 * Copy files and folders.
+		 */
 		copy: {
 			dist: {
 				files: [
