@@ -21,21 +21,27 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "grunt": "~0.4.2",
-    "grunt-contrib-sass": "~0.7.2",
+  	"assemble": "~0.4.40",
+    "grunt": "~0.4.5",
+    "load-grunt-configs": "~0.4.0",
+    "load-grunt-tasks": "~0.5.0",
+
+    "grunt-autoprefixer": "~0.7.5",
+    "grunt-browserify": "~2.1.2",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-connect": "~0.8.0",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-contrib-sass": "~0.7.3",
     "grunt-contrib-jshint": "~0.8.0",
     "grunt-contrib-watch": "~0.5.3",
-    "grunt-contrib-uglify": "~0.3.2",
-    "grunt": "~0.4.2",
     "grunt-csso": "~0.5.3",
+    "grunt-grunticon": "~1.2.6",
     "grunt-jquery-builder": "~0.1.1",
-    "load-grunt-tasks": "~0.4.0",
-    "grunt-contrib-connect": "~0.7.1",
-    "grunt-autoprefixer": "~0.7.2",
+    "grunt-jscs-checker": "~0.4.4",
+    "grunt-shell": "^0.7.0",
+    "grunt-svgmin": "~0.4.0",
     "grunt-newer": "~0.6.1",
-    "assemble": "~0.4.36",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-copy": "~0.5.0"
+    "uglifyify": "~2.4.0"
   },
   "keywords": []
 }
