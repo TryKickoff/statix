@@ -27,7 +27,7 @@ module.exports.tasks = {
 		},
 
 		assemble : {
-			files: ['src/templates/**/*.hbs', 'src/templates/**/*.md'],
+			files: ['statix/src/templates/**/*.hbs', 'statix/src/templates/**/*.md'],
 			tasks: ['clean', 'assemble', 'newer:copy'],
 			options: {
 				livereload: true
@@ -37,7 +37,7 @@ module.exports.tasks = {
 		livereload: {
 			options: { livereload: true },
 			files: [
-				'dist/css/*.css'
+				'statix/dist/css/*.css'
 			]
 		},
 

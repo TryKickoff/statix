@@ -12,7 +12,7 @@ module.exports.tasks = {
 				// hostname: 'mysite.local',
 				open: true,
 				livereload: true,
-				base: 'dist'
+				base: 'statix/dist'
 			}
 		},
 		styleguide: {
@@ -29,7 +29,7 @@ module.exports.tasks = {
 					target: 'http://0.0.0.0:8000/docs/'
 				},
 				livereload: true,
-				base: 'dist'
+				base: 'statix/dist'
 			}
 		}
 	},
@@ -43,20 +43,20 @@ module.exports.tasks = {
 	 */
 	assemble: {
 		options: {
-			data: 'src/**/*.{json,yml}',
+			data: 'statix/src/**/*.{json,yml}',
 			assets: '<%= site.destination %>/assets',
-			helpers: ['helper-moment', 'handlebars-helper-eachitems', 'src/helpers/helper-*.js'],
+			helpers: ['helper-moment', 'handlebars-helper-eachitems', 'statix/src/helpers/helper-*.js'],
 
-			partials: ['src/templates/includes/**/*.hbs'],
+			partials: ['statix/src/templates/includes/**/*.hbs'],
 			flatten: false,
 
 			layout: 'default.hbs',
-			layoutdir: 'src/templates/layouts'
+			layoutdir: 'statix/src/templates/layouts'
 		},
 
 		default: {
 			files: [{
-				cwd: './src/templates/pages/',
+				cwd: './statix/src/templates/pages/',
 				dest: '<%= site.destination %>',
 				expand: true,
 				src: ['**/*.hbs']

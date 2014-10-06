@@ -242,7 +242,7 @@ body {
   font-size: 20px;
   font-size: 1rem;
   line-height: 1.4;
-  color: #444444;
+  color: #444;
 }
 
 /*
@@ -539,12 +539,12 @@ samp {
 }
 
 ::-moz-selection {
-  color: white;
+  color: #fff;
   background: #3498db;
 }
 
 ::selection {
-  color: white;
+  color: #fff;
   background: #3498db;
 }
 
@@ -593,7 +593,7 @@ samp {
   overflow: visible;
   /* [8] */
   text-align: center;
-  background-color: white;
+  background-color: #fff;
   -o-border-radius: 4px;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -874,8 +874,8 @@ select,
   font-size: 1rem;
   line-height: 1.4;
   color: #4d4d4d;
-  background-color: white;
-  border: 1px solid #cccccc;
+  background-color: #fff;
+  border: 1px solid #ccc;
   -o-border-radius: 3px;
   border-radius: 3px;
 }
@@ -907,7 +907,7 @@ input[type="file"] {
   padding: initial;
   line-height: initial;
   border: initial;
-  background-color: white;
+  background-color: #fff;
   background-color: initial;
   -o-box-shadow: none;
   box-shadow: none;
@@ -942,7 +942,7 @@ input[type="submit"] {
 }
 
 select {
-  background-color: white;
+  background-color: #fff;
 }
 select[multiple], select[size] {
   height: auto;
@@ -1146,7 +1146,7 @@ textarea:focus:required:invalid:focus {
   padding: 27px 20px 28px;
   margin-top: 28px;
   margin-bottom: 28px;
-  background-color: whitesmoke;
+  background-color: #f5f5f5;
   border-top: 1px solid #ddd;
   zoom: 1;
 }
@@ -1644,7 +1644,7 @@ table {
   line-height: 1.4;
   text-align: left;
   vertical-align: top;
-  border-top: 1px solid #dddddd;
+  border-top: 1px solid #ddd;
 }
 .table th, .table tfoot td {
   font-weight: bold;
@@ -1656,7 +1656,7 @@ table {
   border-top: 0;
 }
 .table tbody + tbody {
-  border-top: 2px solid #dddddd;
+  border-top: 2px solid #ddd;
 }
 
 .table--condensed th, .table--condensed td {
@@ -1664,7 +1664,7 @@ table {
 }
 
 .table--bordered {
-  border: 1px solid #dddddd;
+  border: 1px solid #ddd;
   border-left: 0;
   border-collapse: separate;
   *border-collapse: collapsed;
@@ -1672,7 +1672,7 @@ table {
   border-radius: 4px;
 }
 .table--bordered th, .table--bordered td {
-  border-left: 1px solid #dddddd;
+  border-left: 1px solid #ddd;
 }
 .table--bordered caption + thead tr:first-child th, .table--bordered caption + tbody tr:first-child th, .table--bordered caption + tbody tr:first-child td, .table--bordered colgroup + thead tr:first-child th, .table--bordered colgroup + tbody tr:first-child th, .table--bordered colgroup + tbody tr:first-child td, .table--bordered thead:first-child tr:first-child th, .table--bordered tbody:first-child tr:first-child th, .table--bordered tbody:first-child tr:first-child td {
   border-top: 0;
@@ -1699,7 +1699,7 @@ table {
 }
 
 .table tbody tr:hover td, .table tbody tr:hover th {
-  background-color: whitesmoke;
+  background-color: #f5f5f5;
 }
 
 /* ==========================================================================
@@ -1712,7 +1712,7 @@ pre {
   font-family: Menlo, Monaco, "Courier New", monospace;
   font-size: 13px;
   font-size: 0.65rem;
-  color: #dd1144;
+  color: #d14;
   -o-border-radius: 3px;
   border-radius: 3px;
   -moz-tab-size: 3;
@@ -1721,7 +1721,7 @@ pre {
 
 code {
   padding: 2px 4px;
-  color: #dd1144;
+  color: #d14;
   background-color: #fbefc0;
 }
 
@@ -1730,7 +1730,7 @@ pre {
   padding: 13.5px;
   margin: 0 0 14px;
   line-height: 1.4;
-  color: #222222;
+  color: #222;
   background-color: #f7f7f9;
   border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, 0.15);
@@ -1746,7 +1746,7 @@ pre.prettyprint {
 }
 pre code {
   padding: 0;
-  color: #222222;
+  color: #222;
   background-color: #f7f7f9;
   border: 0;
 }
@@ -2086,7 +2086,6 @@ body {
 @-ms-viewport {
   width: device-width;
 }
-
 * {
   -webkit-tap-highlight-color: #3498db !important;
 }
@@ -2099,7 +2098,7 @@ textarea[contenteditable] {
 @media screen and (max-width: 400px) {
   @-ms-viewport {
     width: 320px;
-}
+  }
 }
 /* Print styles */
 /* ==========================================================================
@@ -2156,8 +2155,7 @@ textarea[contenteditable] {
 
   @page {
     margin: 0.5cm;
-}
-
+  }
   p, h2, h3 {
     orphans: 3;
     widows: 3;
@@ -2167,4 +2165,5 @@ textarea[contenteditable] {
     page-break-after: avoid;
   }
 }
+
 /*# sourceMappingURL=kickoff-old-ie.css.map */

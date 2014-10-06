@@ -13,23 +13,21 @@ module.exports.tasks = {
 				style: 'expanded',
 				lineNumbers: false,
 				debugInfo : false,
-				precision : 8,
-				sourcemap: true
+				precision : 8
 			},
 			files: {
-				'css/kickoff.css'       : 'scss/kickoff.scss',
-				'css/kickoff-old-ie.css': 'scss/kickoff-old-ie.scss'
+				'statix/dist/assets/css/kickoff.css'       : 'scss/kickoff.scss',
+				'statix/dist/assets/css/kickoff-old-ie.css': 'scss/kickoff-old-ie.scss'
 			}
 		},
 		styleguide: {
 			options: {
 				unixNewlines: true,
 				style: 'expanded',
-				precision : 8,
-				sourcemap: true
+				precision : 8
 			},
 			files: {
-				'css/styleguide.css': 'scss/styleguide.scss'
+				'statix/dist/assets/css/styleguide.css': 'scss/styleguide.scss'
 			}
 		}
 	},
@@ -51,8 +49,8 @@ module.exports.tasks = {
 				map: true
 			},
 			files: {
-				'css/kickoff.css'       : 'css/kickoff.css',
-				'css/kickoff-old-ie.css': 'css/kickoff-old-ie.css'
+				'statix/dist/assets/css/kickoff.css'       : 'statix/dist/assets/css/kickoff.css',
+				'statix/dist/assets/css/kickoff-old-ie.css': 'statix/dist/assets/css/kickoff-old-ie.css'
 			}
 		},
 		styleguide : {
@@ -64,7 +62,7 @@ module.exports.tasks = {
 				map: false
 			},
 			files: {
-				'css/styleguide.css' : 'css/styleguide.css'
+				'statix/dist/assets/css/styleguide.css' : 'statix/dist/assets/css/styleguide.css'
 			}
 		}
 	},

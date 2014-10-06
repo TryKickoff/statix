@@ -4,4 +4,4 @@
 
 production: <%= production %>
 
-destination: ./dist
+destination: ./statix/dist

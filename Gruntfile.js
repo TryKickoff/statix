@@ -8,7 +8,7 @@ module.exports = function (grunt) {
 
 	var options = {
 		pkg: require('./package'), // <%=pkg.name%>
-		site: grunt.file.readYAML('src/data/site.yml'),
+		site: grunt.file.readYAML('statix/src/data/site.yml'),
 
 		/**
 		 * Config - Edit this section
@@ -18,9 +18,11 @@ module.exports = function (grunt) {
 		 * Choose javascript files to be uglified
 		 */
 		config : {
+			src: "_grunt-configs/*.js",
+
 			js : {
 				// <%=config.js.distDir%>
-				distDir  : 'js/dist/',
+				distDir  : 'statix/dist/assets/js/',
 
 				// <%=config.js.distFile%>
 				distFile : 'app.min.js',
@@ -31,7 +33,6 @@ module.exports = function (grunt) {
 				// <%=config.js.watchList%>
 				fileList : [
 					'js/**/*.js',
-					'!js/dist/**/*.js',
 					'bower_components/**/*.js',
 				]
 			}
