@@ -1,10 +1,9 @@
 module.exports.tasks = {
 
 	/**
-	 * Sass compilation
+	 * Sass compilation using grunt-sass
 	 * https://github.com/gruntjs/grunt-contrib-sass
 	 * Includes kickoff.scss and kickoff-old-ie.scss by default
-	 * Also creates source maps
 	 */
 	sass: {
 		kickoff: {
@@ -13,21 +12,23 @@ module.exports.tasks = {
 				style: 'expanded',
 				lineNumbers: false,
 				debugInfo : false,
-				precision : 8
+				precision : 8,
+				loadPath : '<%=config.css.scssDir%>/'
 			},
 			files: {
-				'statix/dist/assets/css/kickoff.css'       : 'scss/kickoff.scss',
-				'statix/dist/assets/css/kickoff-old-ie.css': 'scss/kickoff-old-ie.scss'
+				'statix/dist/assets/css/<%=config.css.srcFile%>.css'       : '<%=config.css.scssDir%>/<%=config.css.srcFile%>.scss',
+				'statix/dist/assets/css/<%=config.css.srcFile%>-old-ie.css': '<%=config.css.scssDir%>/<%=config.css.srcFile%>-old-ie.scss'
 			}
 		},
 		styleguide: {
 			options: {
 				unixNewlines: true,
-				style: 'expanded',
-				precision : 8
+				style: 'compressed',
+				precision : 8,
+				loadPath : '<%=config.css.scssDir%>/'
 			},
 			files: {
-				'statix/dist/assets/css/styleguide.css': 'scss/styleguide.scss'
+				'statix/dist/assets/css/styleguide.css': '<%=config.css.scssDir%>/styleguide.scss'
 			}
 		}
 	},
@@ -40,27 +41,23 @@ module.exports.tasks = {
 	 * Auto prefixes your CSS using caniuse data
 	 */
 	autoprefixer: {
-		dist : {
-			options: {
-				// Task-specific options go here - we are supporting
-				// the last 2 browsers, any browsers with >1% market share,
-				// and ensuring we support IE7 + 8 with prefixes
-				browsers: ['> 5%', 'last 4 versions', 'firefox > 3.6', 'ie > 6'],
-				map: true
-			},
+		options: {
+			// We are supporting the last 2 browsers, any browsers with >1% market share,
+			// and ensuring we support IE8+ with prefixes
+			browsers: ['> 5%', 'last 4 versions', 'firefox > 3.6', 'ie > 7'],
+			map: true
+		},
+
+		kickoff: {
+			expand: true,
+			flatten: true,
 			files: {
-				'statix/dist/assets/css/kickoff.css'       : 'statix/dist/assets/css/kickoff.css',
-				'statix/dist/assets/css/kickoff-old-ie.css': 'statix/dist/assets/css/kickoff-old-ie.css'
+				'statix/dist/assets/css/<%=config.css.srcFile%>.css'       : 'statix/dist/assets/css/<%=config.css.srcFile%>.css',
+				'statix/dist/assets/css/<%=config.css.srcFile%>-old-ie.css': 'statix/dist/assets/css/<%=config.css.srcFile%>-old-ie.css'
 			}
 		},
+
 		styleguide : {
-			options: {
-				// Task-specific options go here - we are supporting
-				// the last 2 browsers, any browsers with >1% market share,
-				// and ensuring we support IE7 + 8 with prefixes
-				browsers: ['> 5%', 'last 4 versions', 'firefox > 3.6', 'ie > 6'],
-				map: false
-			},
 			files: {
 				'statix/dist/assets/css/styleguide.css' : 'statix/dist/assets/css/styleguide.css'
 			}
@@ -79,8 +76,8 @@ module.exports.tasks = {
 				restructure: false //turns structural optimiations off as can mess up fallbacks http://bem.info/tools/optimizers/csso/description/
 			},
 			files: {
-				'css/kickoff.css'       : 'css/kickoff.css',
-				'css/kickoff-old-ie.css': 'css/kickoff-old-ie.css'
+				'statix/dist/assets/css/<%=config.css.srcFile%>.css'       : 'statix/dist/assets/css/<%=config.css.srcFile%>.css',
+				'statix/dist/assets/css/<%=config.css.srcFile%>-old-ie.css': 'statix/dist/assets/css/<%=config.css.srcFile%>-old-ie.css'
 			},
 
 		}

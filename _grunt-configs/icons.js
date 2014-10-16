@@ -13,7 +13,7 @@ module.exports.tasks = {
 			}],
 			options: {
 				// customselectors: {
-				// 	"*": [".icon-$1:before"]
+				// 	"arrow": [".icon-arrow:before"]
 				// }
 			}
 		}

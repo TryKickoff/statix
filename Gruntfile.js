@@ -11,30 +11,41 @@ module.exports = function (grunt) {
 		site: grunt.file.readYAML('statix/src/data/site.yml'),
 
 		/**
-		 * Config - Edit this section
-		 * ==========================
-		 * Choose javascript dist filename
-		 * Choose javascript dist location
-		 * Choose javascript files to be uglified
+		 * Grunt global vars
+		 * Many of the Grunt tasks use these vars
 		 */
 		config : {
 			src: "_grunt-configs/*.js",
 
+			css : {
+				distDir : 'css',     // <%=config.css.distDir%>
+				srcFile : 'kickoff', // <%=config.css.srcFile%>
+				scssDir : 'scss'     // <%=config.css.scssDir%>
+			},
+
 			js : {
-				// <%=config.js.distDir%>
-				distDir  : 'statix/dist/assets/js/',
+				distDir  : 'statix/dist/assets/js/', // <%=config.js.distDir%>
+				distFile : 'app.min.js', // <%=config.js.distFile%>
+				srcFile : 'js/script.js', // <%=config.js.srcFile%>
 
-				// <%=config.js.distFile%>
-				distFile : 'app.min.js',
-
-				// <%=config.js.srcFile%>
-				srcFile : 'js/script.js',
-
-				// <%=config.js.watchList%>
+				// <%=config.js.fileList%>
 				fileList : [
 					'js/**/*.js',
-					'bower_components/**/*.js',
+					'bower_modules/**/*.js',
 				]
+			},
+
+			testing: {
+				visual : {
+					sizes: [ '600', '1000', '1200' ], // <%=config.testing.visual.sizes%>
+
+					// <%=config.testing.visual.urls%>
+					urls : [
+						'http://localhost:3000',
+						'http://localhost:3000/_docs/',
+						'http://localhost:3000/_docs/styleguide.html'
+					]
+				}
 			}
 		}
 	};
@@ -45,24 +56,23 @@ module.exports = function (grunt) {
 	// Define the configuration for all the tasks
 	grunt.initConfig(configs);
 
-	//load assemble task
+	//load assemble task for compiling static templates
 	grunt.loadNpmTasks('assemble');
 
 
 
 	/* ==========================================================================
 		Available tasks:
-* grunt            : run jshint, browserify and sass:kickoff
-* grunt start      : run this before starting development
-* grunt watch      : run sass:kickoff, browserify and livereload
-* grunt dev        : run browserify, sass:kickoff & autoprefixer:dist
-* grunt deploy     : run jshint, browserify, sass:kickoff and csso
-* grunt jquery     : build custom version of jquery
-* grunt styleguide : watch js & scss, run a local server for editing the styleguide
-* grunt serve      : watch js & scss and run a local server
-* grunt icons      : generate the icons. uses svgmin and grunticon
-* grunt jscheck    : run jshint & jscs
-* grunt travis     : used by travis ci only
+	 * grunt            : run jshint, uglify and sass:kickoff
+	 * grunt start      : run this before starting development
+	 * grunt watch      : run sass:kickoff, uglify and livereload
+	 * grunt dev        : run uglify, sass:kickoff & autoprefixer:kickoff
+	 * grunt deploy     : run jshint, uglify, sass:kickoff and csso
+	 * grunt styleguide : watch js & scss, run a local server for editing the styleguide
+	 * grunt serve      : watch js & scss and run a local server
+	 * grunt icons      : generate the icons. uses svgmin and grunticon
+	 * grunt check      : run jshint
+	 * grunt travis     : used by travis ci only
 		 ========================================================================== */
 
 	/**
@@ -70,26 +80,32 @@ module.exports = function (grunt) {
 	* run browserify, sass:kickoff and autoprefixer
 	*/
 	grunt.registerTask('default', [
+		'clean:all',
+		'assemble',
+		'shimly',
 		'newer:browserify:prod',
 		'newer:sass:kickoff',
-		'autoprefixer:dist'
+		'autoprefixer:kickoff',
+		'copy:dist',
+		'browserSync:serve',
+		'watch'
 	]);
 
 	/**
 	* GRUNT START * Run this to
-	* run jquery builder, browserify, sass and autoprefixer
+	* run bower install, browserify, sass and autoprefixer
 	*/
 	grunt.registerTask('start', [
 		'clean:all',
 		'assemble',
-		'jquery',
 		'shell:bowerinstall',
+		'shimly',
 		'browserify:prod',
 		'sass:kickoff',
 		'sass:styleguide',
-		'autoprefixer:dist',
+		'autoprefixer:kickoff',
 		'autoprefixer:styleguide',
-		'copy',
+		'copy:dist',
 		'connect:start',
 		'watch'
 	]);
@@ -97,12 +113,16 @@ module.exports = function (grunt) {
 
 	/**
 	 * GRUNT DEV * A task for development
-	 * run browserify, sass:kickoff & autoprefixer:dist
+	 * run browserify, sass:kickoff & autoprefixer:kickoff
 	 */
 	grunt.registerTask('dev', [
+		'clean:all',
+		'assemble',
+		'shimly',
 		'browserify:dev',
 		'sass:kickoff',
-		'autoprefixer:dist'
+		'autoprefixer:dist',
+		'copy:dist'
 	]);
 
 
@@ -111,10 +131,14 @@ module.exports = function (grunt) {
 	* run browserify, sass:kickoff, autoprefixer:dist and csso
 	*/
 	grunt.registerTask('deploy', [
+		'clean:all',
+		'assemble',
+		'shimly',
 		'newer:browserify:prod',
 		'newer:sass:kickoff',
-		'newer:autoprefixer:dist',
-		'newer:csso'
+		'newer:autoprefixer:kickoff',
+		'newer:csso',
+		'copy:dist'
 	]);
 
 
@@ -123,10 +147,11 @@ module.exports = function (grunt) {
 	 * run browserify, sass:kickoff, sass:styleguide, autoprefixer:dist, autoprefixer:styleguide, connect:styleguide & watch
 	 */
 	grunt.registerTask('styleguide', [
+		'shimly',
 		'browserify:prod',
 		'sass:kickoff',
 		'sass:styleguide',
-		'autoprefixer:dist',
+		'autoprefixer:kickoff',
 		'autoprefixer:styleguide',
 		'connect:styleguide',
 		'watch'
@@ -140,14 +165,12 @@ module.exports = function (grunt) {
 	grunt.registerTask('serve', [
 		'clean:all',
 		'assemble',
+		'shimly',
 		'browserify:prod',
 		'sass:kickoff',
-		'sass:styleguide',
-		'autoprefixer:dist',
-		'svgmin',
-		'grunticon',
-		'copy',
-		'connect:server',
+		'autoprefixer:kickoff',
+		'copy:dist',
+		'browserSync:serve',
 		'watch'
 	]);
 
@@ -164,22 +187,20 @@ module.exports = function (grunt) {
 
 
 	/**
-	 * GRUNT JSCHECK * Check js for errors and style problems
-	 * run jshint, jscs
+	 * GRUNT CHECKS * Check code for errors
+	 * run jshint
 	 */
-	// Default task
-	grunt.registerTask('jscheck', [
-		'jshint',
-		'jscs'
+	grunt.registerTask('checks', [
+		'jshint:project'
 	]);
 
 
 	//Travis CI to test build
 	grunt.registerTask('travis', [
-		'jshint',
+		'jshint:project',
 		'browserify:prod',
 		'sass:kickoff',
-		'autoprefixer:dist'
+		'autoprefixer:kickoff'
 	]);
 
 };

@@ -26,10 +26,33 @@ module.exports.tasks = {
 		start: {
 			options: {
 				open: {
-					target: 'http://0.0.0.0:8000/docs/'
+					target: 'http://0.0.0.0:8000/_docs/index.html'
 				},
-				livereload: true,
-				base: 'statix/dist'
+				livereload: true
+			}
+		}
+	},
+
+
+	/**
+	 * browserSync
+	 * http://www.browsersync.io/docs/options/
+	 * http://www.browsersync.io/docs/grunt/
+	 */
+	browserSync: {
+		serve: {
+			bsFiles: {
+				src: [
+					'statix/dist/assets/css/*.css',
+					'<%=config.js.distDir%>/**/*.js',
+					'statix/dist/**/*.html'
+				]
+			},
+			options: {
+				watchTask: true,
+				server: {
+					baseDir: "./statix/dist/"
+				}
 			}
 		}
 	},

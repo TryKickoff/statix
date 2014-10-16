@@ -7,28 +7,36 @@ module.exports.tasks = {
 	*/
 	watch: {
 		scss: {
-			files: ['scss/**/*.scss'],
+			files: ['<%=config.css.scssDir%>/**/*.scss'],
 			tasks: [
 				'sass:kickoff',
-				'autoprefixer:dist',
-				'copy:css'
+				'autoprefixer:kickoff'
 			]
 		},
 
+		"styleguide_scss": {
+			files: ['<%=config.css.scssDir%>/styleguide.scss'],
+			tasks: [
+				'sass:styleguide',
+				'autoprefixer:styleguide'
+			]
+		},
+
+
 		js: {
 			files: [
-				'<%=config.js.fileList%>',
-				'Gruntfile.js'
+				'js/**/*.js',
+				'!js/dist/**/*.js',
+				'!statix/assets/js/dist/**/*.js'
 			],
 			tasks: [
-				'browserify:dev',
-				'copy:js'
+				'browserify:dev'
 			]
 		},
 
 		assemble : {
 			files: ['statix/src/templates/**/*.hbs', 'statix/src/templates/**/*.md'],
-			tasks: ['clean', 'assemble', 'newer:copy'],
+			tasks: ['assemble', 'newer:copy:dist'],
 			options: {
 				livereload: true
 			}
@@ -48,6 +56,10 @@ module.exports.tasks = {
 				'svgmin',
 				'grunticon'
 			]
+		},
+
+		grunt: {
+			files: ['_grunt-configs/*.js', 'Gruntfile.js']
 		}
 	}
 }

@@ -48,4 +48,18 @@ module.exports.tasks = {
 	},
 
 
-}
+	/**
+	 * Grunt Photobox
+	 * https://github.com/stefanjudis/grunt-photoBox
+	 * Visual regression testing tool
+	 */
+	photobox: {
+		task: {
+			options: {
+				screenSizes : '<%=config.testing.visual.sizes%>',
+				urls        : '<%=config.testing.visual.urls%>'
+			}
+		}
+	}
+
+};

@@ -1,6 +1,6 @@
-![](http://i.imgur.com/kwr16tO.jpg)
+![](http://i.imgur.com/ACbqfMq.jpg)
 
-[Statix](https://github.com/tmwagency/statix) makes working with static HTML templates quick and easy.
+[Statix](https://github.com/tmwagency/statix) makes creating and working with static HTML templates quick and easy.
 
 ## Why do I need Statix in my life?
 
