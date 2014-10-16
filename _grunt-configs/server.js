@@ -17,16 +17,18 @@ module.exports.tasks = {
 		},
 		styleguide: {
 			options: {
+				base: 'statix/dist',
 				open: {
-					target: 'http://0.0.0.0:8000/_docs/styleguide.html'
+					target: 'http://0.0.0.0:8000/docs/styleguide.html'
 				},
 				livereload: true
 			}
 		},
 		start: {
 			options: {
+				base: 'statix/dist',
 				open: {
-					target: 'http://0.0.0.0:8000/_docs/index.html'
+					target: 'http://0.0.0.0:8000/docs/index.html'
 				},
 				livereload: true
 			}
