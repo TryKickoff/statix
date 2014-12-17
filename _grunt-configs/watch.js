@@ -35,7 +35,7 @@ module.exports.tasks = {
 		},
 
 		assemble : {
-			files: ['statix/src/templates/**/*.hbs', 'statix/src/templates/**/*.md'],
+			files: ['statix/src/templates/**/*.{hbs,md}'],
 			tasks: ['assemble', 'newer:copy:dist'],
 			options: {
 				livereload: true
