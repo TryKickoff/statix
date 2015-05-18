@@ -64,7 +64,7 @@ module.exports.tasks = {
 		js: {
 			files: [{
 				expand: true,
-				cwd: '<%=config.distDir%>',
+				cwd: '<%=config.js.distDir%>',
 				src: ['./**/*.*'],
 				dest: '<%= config.statix.dir%>/dist/assets/js'
 			}]
