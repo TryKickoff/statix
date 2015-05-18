@@ -18,17 +18,22 @@ module.exports.tasks = {
 	 * Copy files and folders.
 	 */
 	copy: {
+		modernizr: {
+			src: '<%=config.srcDir%>/js/libs/modernizr.min.js',
+			dest: '<%=config.distDir%>/js/libs/modernizr.min.js'
+		},
+
 		statix: {
 			files: [
 				{
 					expand: true,
-					cwd: '<%=config.img.srcDir%>',
+					cwd: '<%=config.img.distDir%>',
 					src: ['./**/*.*'],
 					dest: '<%=config.statix.dir%>/dist/assets/img'
 				},
 				{
 					expand: true,
-					cwd: '<%=config.srcDir%>/js',
+					cwd: '<%=config.js.distDir%>',
 					src: ['./**/*.*'],
 					dest: '<%=config.statix.dir%>/dist/assets/js'
 				},
@@ -51,7 +56,7 @@ module.exports.tasks = {
 		img: {
 			files: [{
 				expand: true,
-				cwd: '<%=config.img.srcDir%>',
+				cwd: '<%=config.img.distDir%>',
 				src: ['./**/*.*'],
 				dest: '<%= config.statix.dir%>/dist/assets/img'
 			}]
@@ -59,7 +64,7 @@ module.exports.tasks = {
 		js: {
 			files: [{
 				expand: true,
-				cwd: '<%=config.srcDir%>/js',
+				cwd: '<%=config.distDir%>',
 				src: ['./**/*.*'],
 				dest: '<%= config.statix.dir%>/dist/assets/js'
 			}]

@@ -19,6 +19,15 @@
  * font-size : em(12, 24);
  */
 /**
+ * Convert pixels to rems
+ * For a relational value of 12px write rem(12) when the parent is 16px
+ * If the parent is another value say 24px write rem(12, 24)
+ *
+ * Usage:
+ * font-size : rem(12);
+ * font-size : rem(12, 24);
+ */
+/**
  * Strips the units from a value. e.g. 12px -> 12
  * Usage: strip-units(400px)
  */
@@ -42,6 +51,17 @@
    * kickoff-old-ie.scss ignores any content in media-queries with values less
      than the $fix-mqs var value
    ========================================================================== */
+/**
+ * $mq-base var:
+ * This is needed because browsers do not calculate em-based
+ * media queries correctly. It is set to 16 because we think
+ * the majority of users will have their browser set to 100%
+ * zoom level.
+ *
+ * See below for an explanation:
+ * http://www.filamentgroup.com/lab/how-we-learned-to-leave-body-font-size-alone.html
+ *
+ */
 /*
    Min-width media query:
    * Equivalent to: @media screen and (min-width: 20em) { ... }
@@ -111,10 +131,7 @@
  * Edit your color palette and app vars before your begin
  */
 /**
- * Colour palette (yeah we're British!)
- */
-/**
- * Forms
+ * Color palette
  */
 /**
  * Variables
@@ -122,9 +139,8 @@
  * Typography
  * Breakpoints
  * Paths
- * Grid setup
- * Colour palette
- * Components
+ * Layout & Grid
+ * App-specific
  */
 /**
  * Typography
@@ -146,10 +162,6 @@
 /**
  * Layout setup
  * Settings here override & affect the output in scss/partials/components/grid.scss
- */
-/**
- * Tables
- * Customizes the `.table` component with basic values, each used across all table variations.
  */
 /**
  * App-specific variables
@@ -265,10 +277,9 @@ textarea {
 html {
   font-size: 18px;
   -webkit-text-size-adjust: 100%;
-      -ms-text-size-adjust: 100%;
-          text-size-adjust: 100%;
 }
-@media screen and (min-width: 38.4em) {
+
+@media screen and (min-width: 48em) {
   html {
     font-size: 20px;
   }
@@ -301,11 +312,14 @@ p {
  */
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
-  font-family: inherit;
+  font-family: Georgia, "Times New Roman", Times, serif;
   font-weight: bold;
   line-height: 1.1;
   text-rendering: optimizelegibility;
+  margin-top: 0;
+  margin-bottom: 28px;
 }
+
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
   font-weight: normal;
 }
@@ -313,31 +327,17 @@ h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
 h1, .h1, .alpha {
   font-size: 39.0625px;
   font-size: 1.953125rem;
-  margin-top: 0;
   margin-bottom: 56px;
 }
 
 h2, .h2, .beta {
   font-size: 31.25px;
   font-size: 1.5625rem;
-  margin-top: 0;
-  margin-bottom: 28px;
 }
 
 h3, .h3, .gamma {
   font-size: 25px;
   font-size: 1.25rem;
-  margin-top: 0;
-  margin-bottom: 28px;
-}
-
-h4, .h4, .delta,
-h5, .h5, .epsilon,
-h6, .h6, .zeta {
-  margin-top: 0;
-  margin-bottom: 0;
-  font-size: 16px;
-  font-size: 0.8rem;
 }
 
 h4, .h4, .delta {
@@ -345,8 +345,11 @@ h4, .h4, .delta {
   font-size: 1rem;
 }
 
+h5, .h5, .epsilon,
 h6, .h6, .zeta {
-  text-transform: uppercase;
+  font-size: 16px;
+  font-size: 0.8rem;
+  margin-bottom: 0;
 }
 
 * + h1, * + .h1, * + .alpha,
@@ -364,18 +367,21 @@ small {
  * Links
  */
 a, a:link {
-  color: #3498db;
+  color: #16c98d;
   text-decoration: none;
 }
+
 a:visited {
-  color: #3498db;
+  color: #16c98d;
   text-decoration: none;
 }
+
 a:hover, a:focus {
-  color: #196090;
+  color: #0c6d4d;
 }
+
 a:active {
-  color: #196090;
+  color: #0c6d4d;
 }
 
 /**
@@ -393,34 +399,37 @@ ul, ol {
   padding: 0;
   margin: 0 0 28px 28px;
 }
+
 ul ul,
 ul ol, ol ul,
 ol ol {
   margin-left: 56px;
 }
+
 ul ul, ol ul {
   list-style-type: circle;
 }
+
 ul ul ul, ol ul ul {
   list-style-type: square;
 }
+
 ul ol, ol ol {
   list-style-type: upper-roman;
 }
+
 ul ol ol, ol ol ol {
   list-style-type: lower-roman;
 }
-ul ul,
-ul ol, ol ul,
-ol ol {
+
+ul ul, ul ol, ol ul, ol ol {
   margin-bottom: 0;
 }
 
 /**
  * Unstyled lists
  */
-.unstyled, .tabs, .l-tabsContent,
-nav ul, nav ol {
+.unstyled, .tabs, .l-tabsContent {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -440,24 +449,6 @@ dt {
 
 dd {
   margin-left: 28px;
-}
-
-.dl-horizontal:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-.dl-horizontal dt {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  float: left;
-  clear: left;
-  width: 220px;
-  text-align: right;
-}
-.dl-horizontal dd {
-  margin-left: 240px;
 }
 
 /**
@@ -491,30 +482,28 @@ blockquote {
   margin: 28px;
   border-left: 4px solid #cccccc;
 }
+
 blockquote p {
   margin-bottom: 0;
   font-size: 20px;
   font-size: 1rem;
   font-weight: 300;
 }
+
 blockquote small {
   display: block;
   color: #b3b3b3;
 }
+
 blockquote small:before {
   content: '\2014 \00A0';
 }
 
-q:before, q:after,
+q:before,
+q:after,
 blockquote:before,
 blockquote:after {
   content: "";
-}
-
-address {
-  display: block;
-  margin-bottom: 28px;
-  font-style: normal;
 }
 
 cite {
@@ -526,7 +515,7 @@ dfn {
 }
 
 mark {
-  background: #f1c40f;
+  background: #feef6d;
   padding: 2px 4px;
   border-radius: 3px;
 }
@@ -539,11 +528,11 @@ sub, sup {
 }
 
 sup {
-  top: -0.5em;
+  top: -.5em;
 }
 
 sub {
-  bottom: -0.25em;
+  bottom: -.25em;
 }
 
 samp {
@@ -553,8 +542,7 @@ samp {
 /**
  * Utilities
  */
-.text-centre,
-.text-center {
+.text-centre, .text-center {
   text-align: center;
 }
 
@@ -568,13 +556,13 @@ samp {
 
 ::-moz-selection {
   color: #fff;
-  background: #3498db;
+  background: #16c98d;
   text-shadow: none;
 }
 
 ::selection {
   color: #fff;
-  background: #3498db;
+  background: #16c98d;
   text-shadow: none;
 }
 
@@ -597,9 +585,20 @@ samp {
  */
 /**
  * Buttons
- * Based on csswizardry.com/beautons
+ * =================================
+ * Index:
+ * - Associated Button Variables
+ * - Base button styling
+ * – Button Modifiers
+ * 	 – btn--primary
+ *   – btn--block
+ */
+/**
+ * Define associated Button variables
+ */
+/**
+ * Base button styles – Based on csswizardry.com/beautons
  *
- * Base button styles:
  * 1. Allow us to better style box model properties.
  * 2. Line different sized buttons up a little nicer.
  * 3. Stop buttons wrapping and looking broken.
@@ -652,58 +651,63 @@ samp {
       -ms-user-select: none;
           user-select: none;
 }
-.btn, .tabs a, .btn:link, .tabs a:link, .btn:visited, .tabs a:visited {
+
+.btn,
+.tabs a,
+.btn:link,
+.tabs a:link,
+.btn:visited, .tabs a:visited {
   color: #fff;
 }
-.btn:hover, .tabs a:hover, .btn:active, .tabs a:active, .btn:focus, .tabs a:focus {
+
+.btn:hover,
+.tabs a:hover,
+.btn:active,
+.tabs a:active,
+.btn:focus, .tabs a:focus {
   background-color: #798d8f;
 }
-.btn, .tabs a, .btn:hover, .tabs a:hover, .btn:active, .tabs a:active, .btn:focus, .tabs a:focus, .btn:visited, .tabs a:visited {
+
+.btn,
+.tabs a,
+.btn:hover,
+.tabs a:hover,
+.btn:active,
+.tabs a:active,
+.btn:focus,
+.tabs a:focus,
+.btn:visited, .tabs a:visited {
   text-decoration: none;
 }
-.btn:active, .tabs a:active, .btn:focus, .tabs a:focus {
+
+.btn:active,
+.tabs a:active,
+.btn:focus, .tabs a:focus {
   outline: none;
 }
-.btn.disabled, .tabs a.disabled, .btn[disabled], .tabs a[disabled] {
+
+.btn.disabled,
+.tabs a.disabled,
+.btn[disabled], .tabs a[disabled] {
   cursor: default;
   background-image: none;
-  opacity: 0.65;
+  opacity: .65;
 }
 
 .btn--primary {
-  background-color: #3498db;
+  background-color: #16c98d;
 }
-.btn--primary, .btn--primary:link, .btn--primary:visited {
+
+.btn--primary,
+.btn--primary:link,
+.btn--primary:visited {
   color: #fff;
 }
-.btn--primary:hover, .btn--primary:active, .btn--primary:focus {
-  background-color: #217dbb;
-}
 
-.btn--large {
-  font-size: 25px;
-  font-size: 1.25rem;
-  line-height: 3;
-  height: 3em;
-  padding-right: 2em;
-  padding-left: 2em;
-  border-radius: 6px;
-}
-
-.btn--small {
-  font-size: 16px;
-  font-size: 0.8rem;
-  line-height: 1.5;
-  height: 1.5em;
-  padding-right: 0.75em;
-  padding-left: 0.75em;
-  border-radius: 3px;
-}
-
-.btn--pill {
-  padding-left: 1.5em;
-  padding-right: 1.5em;
-  border-radius: 100em;
+.btn--primary:hover,
+.btn--primary:active,
+.btn--primary:focus {
+  background-color: #119b6d;
 }
 
 .btn--block {
@@ -721,68 +725,6 @@ input[type="submit"].btn--block,
 input[type="reset"].btn--block,
 input[type="button"].btn--block {
   width: 100%;
-}
-
-.btn--natural {
-  vertical-align: baseline;
-  font-size: inherit;
-  line-height: inherit;
-  height: auto;
-  padding-right: 0.5em;
-  padding-left: 0.5em;
-}
-
-.btn--link,
-.btn--link:active,
-.btn--link[disabled] {
-  background-color: transparent;
-  background-image: none;
-}
-
-.btn--link {
-  border-color: transparent;
-  cursor: pointer;
-  color: #3498db;
-  border-radius: 0;
-}
-
-.btn--link:hover,
-.btn--link:focus {
-  color: #196090;
-  text-decoration: underline;
-  background-color: transparent;
-}
-
-.btn--link[disabled]:hover,
-.btn--link[disabled]:focus {
-  color: #333;
-  text-decoration: none;
-}
-
-/*
-   Close Button: for lightboxes etc
-   ========================================================================== */
-.btn-close {
-  position: absolute;
-  right: 20px;
-  top: 20px;
-  display: block;
-  height: 20px;
-  width: 20px;
-  line-height: 17px;
-  background: #000;
-  color: #3498db;
-  text-align: center;
-  border-radius: 5px;
-  cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-}
-.btn-close:hover {
-  color: #fff;
-  border-radius: 50px;
 }
 
 /**
@@ -829,22 +771,22 @@ input[type="button"].btn--block {
   width: 100%;
   margin: 0 auto;
 }
+
 .g-row:after {
   content: "";
   display: table;
   clear: both;
 }
+
 .g-row .g-row {
   min-width: 0;
 }
+
 .g-row .g-row .g-col {
   padding: 0;
 }
 
-.g-col {
-  padding: 10px;
-}
-@media screen and (min-width: 38.4em) {
+@media screen and (min-width: 48em) {
   .g-col {
     float: left;
     min-height: 1px;
@@ -865,64 +807,53 @@ input[type="button"].btn--block {
   }
 }
 
-@media screen and (min-width: 38.4em) {
+@media screen and (min-width: 48em) {
   .g-span1 {
     width: 6.5%;
   }
-
   .g-span2 {
     width: 15%;
   }
-
   .g-span3 {
     width: 23.5%;
   }
-
   .g-span4 {
     width: 32%;
   }
-
   .g-span5 {
     width: 40.5%;
   }
-
   .g-span6 {
     width: 49%;
   }
-
   .g-span7 {
     width: 57.5%;
   }
-
   .g-span8 {
     width: 66%;
   }
-
   .g-span9 {
     width: 74.5%;
   }
-
   .g-span10 {
     width: 83%;
   }
-
   .g-span11 {
     width: 91.5%;
   }
-
   .g-span12 {
     width: 100%;
   }
-
   /**
-   * Offset columns
-   * http://tmwagency.github.io/kickoff/demos/grids.html#offset
-   */
+	 * Offset columns
+	 * http://trykickoff.github.io/demos/grids.html#offset
+	 */
   /**
-   * Source ordering (push & pull)
-   * http://tmwagency.github.io/kickoff/demos/grids.html#source-ordering
-   */
+	 * Source ordering (push & pull)
+	 * http://trykickoff.github.io/demos/grids.html#source-ordering
+	 */
 }
+
 /**
  * Centred columns
  */
@@ -942,6 +873,7 @@ input[type="button"].btn--block {
 .l-list--centred, .l-list--centered {
   text-align: center;
 }
+
 .l-list--centred li, .l-list--centered li {
   display: inline;
 }
@@ -958,6 +890,7 @@ input[type="button"].btn--block {
   display: table;
   clear: both;
 }
+
 .l-list--floated li {
   float: left;
   display: inline-block;
@@ -966,16 +899,21 @@ input[type="button"].btn--block {
 /**
  * Forms
  * =================================
- * Generic form styles
- * Form inputs and groups
- * Form field feedback states
- * Horizontal & vertical forms
- * Horizontal-specific styles
+ * Index:
+ * - Associated Form Variables
+ * - Generic form styles
+ * - Form inputs and groups
+ * - Form field feedback states
+ * - Horizontal & vertical forms
+ * - Horizontal-specific styles
+ */
+/**
+ * Define associated Form variables
  */
 /**
  * Generic form styles
  * =================================
- * Demo: http://tmwagency.github.io/kickoff/demos/forms.html#layout-example-labels-above
+ * Demo: http://trykickoff.github.io/demos/forms.html#layout-example-labels-above
  * Code: https://gist.github.com/mrmartineau/6712577#file-labels-above-inputs-html
  * Usage:
   	<div class="form-controlGroup">
@@ -1008,6 +946,7 @@ input[type="button"].btn--block {
   border-bottom: 1px solid #eee;
   white-space: normal;
 }
+
 .form-legend small {
   font-size: 16px;
   font-size: 0.8rem;
@@ -1033,6 +972,7 @@ input[type="button"].btn--block {
   color: #444;
   font-weight: bold;
 }
+
 .form-label small {
   font-weight: normal;
   color: #919191;
@@ -1042,7 +982,7 @@ input[type="button"].btn--block {
   display: block;
   width: 100%;
   height: 2.5em;
-  padding: 0.5em;
+  padding: .5em;
   font-size: 20px;
   font-size: 1rem;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -1057,12 +997,17 @@ input[type="button"].btn--block {
      -moz-transition: border 200ms ease-in-out;
           transition: border 200ms ease-in-out;
 }
+
 .form-input:focus {
   border-color: #999999;
   outline: 0;
   outline: thin dotted \9;
 }
-.form-input[type="image"], .form-input[type="checkbox"], .form-input[type="radio"], .form-input[type="range"] {
+
+.form-input[type="image"],
+.form-input[type="checkbox"],
+.form-input[type="radio"],
+.form-input[type="range"] {
   width: auto;
   height: auto;
   padding: 0;
@@ -1073,9 +1018,11 @@ input[type="button"].btn--block {
   -moz-box-sizing: border-box;
        box-sizing: border-box;
 }
+
 .form-input[type="image"] {
   border: 0;
 }
+
 .form-input[type="file"] {
   width: auto;
   height: 28px;
@@ -1085,25 +1032,33 @@ input[type="button"].btn--block {
   background-color: #fff;
   background-color: initial;
 }
+
 .form-input[type="hidden"] {
   display: none;
 }
+
 .form-input[type="color"] {
   width: 40px;
   height: 40px;
   overflow: hidden;
   padding: 2px;
 }
+
 .form-input[type="password"] {
   font-family: sans-serif;
 }
+
 .form-input[type="range"] {
   width: 100%;
 }
-.form-input > .radio:first-child, .form-input > .checkbox:first-child {
+
+.form-input > .radio:first-child,
+.form-input > .checkbox:first-child {
   padding-top: 5px;
 }
-.form-input[disabled], .form-input[readonly] {
+
+.form-input[disabled],
+.form-input[readonly] {
   background-color: #e6e6e6;
   border-color: #ccc;
   cursor: not-allowed;
@@ -1122,7 +1077,9 @@ input[type="button"].btn--block {
 .form-input--select {
   background-color: #fff;
 }
-.form-input--select[multiple], .form-input--select[size] {
+
+.form-input--select[multiple],
+.form-input--select[size] {
   height: auto;
 }
 
@@ -1135,6 +1092,7 @@ input[type="button"].btn--block {
   vertical-align: middle;
   line-height: 1em;
 }
+
 .form-input-file:focus {
   outline: none;
 }
@@ -1174,11 +1132,12 @@ input[type="submit"] {
 .control {
   display: block;
 }
+
 .control input[type="radio"],
 .control input[type="checkbox"] {
   vertical-align: middle;
-  margin-right: 0.5em;
-  margin-top: -0.1em;
+  margin-right: .5em;
+  margin-top: -.1em;
   display: inline;
   line-height: normal;
 }
@@ -1209,50 +1168,116 @@ input[type="submit"] {
   background-color: #f5f5f5;
   border-top: 1px solid #ddd;
 }
+
 .form-actions .btn, .form-actions .tabs a, .tabs .form-actions a {
   margin-right: 10px;
 }
+
 .form-actions .btn:last-child, .form-actions .tabs a:last-child, .tabs .form-actions a:last-child {
   margin-right: 0;
 }
 
 /**
+ * Form validation messages
+ */
+.form-controlGroup .form-message {
+  padding-top: 0.5em;
+  padding-left: 0.5em;
+}
+
+.form-actions .form-message {
+  padding: 0.5em;
+}
+
+/**
  * Form field feedback states
  */
-.form-controlGroup--warning .form-label {
-  color: #dab10d;
-}
-.form-controlGroup--warning .form-input {
-  color: #dab10d;
-  border-color: #dab10d;
-  background-color: #fcf1c6;
-}
-.form-controlGroup--warning .form-input:focus {
-  border-color: #aa8a0a;
+.has-warning {
+  color: #f4aa47;
 }
 
-.form-controlGroup--error .form-label {
-  color: #e43725;
-}
-.form-controlGroup--error .form-input {
-  color: #e43725;
-  border-color: #e43725;
-  background-color: #fceae9;
-}
-.form-controlGroup--error .form-input:focus {
-  border-color: #bf2718;
+.form-controlGroup.has-warning .form-label {
+  color: #f4aa47;
 }
 
-.form-controlGroup--success .form-label {
-  color: #2ecc71;
+.form-controlGroup.has-warning .form-input {
+  color: #f4aa47;
+  border-color: #f4aa47;
 }
-.form-controlGroup--success .form-input {
-  color: #2ecc71;
-  border-color: #2ecc71;
-  background-color: #def8e9;
+
+.form-controlGroup.has-warning .form-input:focus {
+  border-color: #f19417;
 }
-.form-controlGroup--success .form-input:focus {
-  border-color: #25a25a;
+
+.form-controlGroup.has-warning .form-controlGroup-message {
+  display: block;
+  color: #f4aa47;
+}
+
+.has-error {
+  color: #B94A4D;
+}
+
+.form-controlGroup.has-error .form-label {
+  color: #B94A4D;
+}
+
+.form-controlGroup.has-error .form-input {
+  color: #B94A4D;
+  border-color: #B94A4D;
+}
+
+.form-controlGroup.has-error .form-input:focus {
+  border-color: #963a3c;
+}
+
+.form-controlGroup.has-error .form-controlGroup-message {
+  display: block;
+  color: #B94A4D;
+}
+
+.has-success {
+  color: #16c98d;
+}
+
+.form-controlGroup.has-success .form-label {
+  color: #16c98d;
+}
+
+.form-controlGroup.has-success .form-input {
+  color: #16c98d;
+  border-color: #16c98d;
+}
+
+.form-controlGroup.has-success .form-input:focus {
+  border-color: #119b6d;
+}
+
+.form-controlGroup.has-success .form-controlGroup-message {
+  display: block;
+  color: #16c98d;
+}
+
+.has-info {
+  color: #288ad6;
+}
+
+.form-controlGroup.has-info .form-label {
+  color: #288ad6;
+}
+
+.form-controlGroup.has-info .form-input {
+  color: #288ad6;
+  border-color: #288ad6;
+}
+
+.form-controlGroup.has-info .form-input:focus {
+  border-color: #206eab;
+}
+
+.form-controlGroup.has-info .form-controlGroup-message {
+  display: block;
+  color: #288ad6;
 }
 
 /**
@@ -1272,14 +1297,14 @@ input[type="submit"] {
   color: #b3b3b3;
 }
 
-@media screen and (min-width: 38.4em) {
+@media screen and (min-width: 48em) {
   /**
-   * Horizontal-specific styles
-   * =================================
-   * add .form--horizontal to the <form> element
-   * Demo: http://tmwagency.github.io/kickoff/demos/forms.html#layout-example-labels-inline
-   * Code: https://gist.github.com/mrmartineau/6712577#file-labels-inline-html
-   */
+	 * Horizontal-specific styles
+	 * =================================
+	 * add .form--horizontal to the <form> element
+	 * Demo: http://trykickoff.github.io/demos/forms.html#layout-example-labels-inline
+	 * Code: https://gist.github.com/mrmartineau/6712577#file-labels-inline-html
+	 */
   .form--horizontal .form-controlGroup {
     margin-bottom: 28px;
   }
@@ -1287,6 +1312,9 @@ input[type="submit"] {
     content: "";
     display: table;
     clear: both;
+  }
+  .form--horizontal .form-controlGroup .form-input--fileWrapper {
+    margin-left: 0;
   }
   .form--horizontal .form-label {
     float: left;
@@ -1300,9 +1328,6 @@ input[type="submit"] {
   .form--horizontal .form-controlGroup-inputWrapper:first-child {
     padding-left: 160px;
   }
-  .form--horizontal .form-controlGroup .form-input--fileWrapper {
-    margin-left: 0;
-  }
   .form--horizontal .form-helpBlock {
     margin-top: 14px;
     margin-bottom: 0;
@@ -1311,6 +1336,7 @@ input[type="submit"] {
     padding-left: 160px;
   }
 }
+
 /**
  * Custom Checkboxes and radios - modified from WTF forms – http://wtfforms.com/
  *
@@ -1366,19 +1392,23 @@ input[type="submit"] {
   /* Checked state */
   /* Active */
 }
+
 .control--custom input {
   position: absolute;
   opacity: 0;
   z-index: -1;
   /* Put the input behind the label so it doesn't overlay text */
 }
+
 .control--custom input:focus ~ .control-indicator {
   box-shadow: 0 0 0 0.075em #fff, 0 0 0 0.2em #a3b1b2;
 }
+
 .control--custom input:checked ~ .control-indicator {
   color: #fff;
   background-color: #a3b1b2;
 }
+
 .control--custom input:active ~ .control-indicator {
   color: #fff;
   background-color: #ccd4d5;
@@ -1409,9 +1439,11 @@ input[type="submit"] {
   position: relative;
   overflow: hidden;
 }
+
 .form-input--fileWrapper--styled:before {
   content: 'Choose file...';
 }
+
 .form-input--fileWrapper--styled:after {
   content: 'Browse';
   cursor: pointer;
@@ -1423,6 +1455,7 @@ input[type="submit"] {
   padding: 0.44em 1em 0;
   background-color: #d9d9d9;
 }
+
 .form-input--fileWrapper--styled .form-input-file {
   opacity: 0;
   position: absolute;
@@ -1445,7 +1478,7 @@ input[type="submit"] {
   min-width: 100%;
   margin: 0;
   background: none;
-  border: none;
+  border: 0;
   outline: none;
   /* Remove select styling */
   appearance: none;
@@ -1462,6 +1495,7 @@ input[type="submit"] {
     display: none;
   }
 }
+
 /* Custom arrow sits on top of the select - could be an image, SVG, icon font, etc. or the arrow could just baked into the bg image on the select */
 .form-input--selectWrapper:after {
   background: none;
@@ -1494,10 +1528,10 @@ x:default {
   max-width: 110%;
   min-width: 110%;
   /* A zero right padding is needed or the native arrow can show up. Downside is the text will run over the arrow */
-  padding: .6em 0 .5em .8em;
+  padding: 0.6em 0 0.5em 0.8em;
   /* Window is a Firefox way of hiding the arrow, sometimes works */
   -moz-appearance: window;
-  text-indent: 0.01px;
+  text-indent: .01px;
   text-overflow: "";
 }
 
@@ -1527,9 +1561,11 @@ img {
   border: 0;
   -ms-interpolation-mode: bicubic;
 }
+
 img.img--left {
   margin: 0 20px 0 0;
 }
+
 img.img--right {
   margin: 0 0 0 20px;
 }
@@ -1569,29 +1605,27 @@ img, object, embed, video {
   width: 100%;
 }
 
-@media screen and (min-width: 20em) {
+@media screen and (min-width: 25em) {
   .media-img,
   .media-body {
     display: table-cell;
     vertical-align: middle;
   }
-  .media--top .media-img, .media--top
-  .media-body {
+  .media--top .media-img,
+  .media--top .media-body {
     vertical-align: top;
   }
-  .media--bottom .media-img, .media--bottom
-  .media-body {
+  .media--bottom .media-img,
+  .media--bottom .media-body {
     vertical-align: bottom;
   }
   .media-img :last-child,
   .media-body :last-child {
     margin-bottom: 0;
   }
-
   .media-body {
     width: 100%;
   }
-
   .media-img {
     padding-right: 10px;
   }
@@ -1604,6 +1638,7 @@ img, object, embed, video {
     padding-left: 10px;
   }
 }
+
 /*
    Fluid width video
    * 16:9 aspect ratio by default
@@ -1616,6 +1651,7 @@ img, object, embed, video {
   /* 16:9 */
   height: 0;
 }
+
 .fluidVideo iframe {
   position: absolute;
   top: 0;
@@ -1643,17 +1679,19 @@ img, object, embed, video {
   list-style-type: none;
   margin: 0;
 }
+
 .l-blockGrid:after {
   content: "";
   display: table;
   clear: both;
 }
+
 .l-blockGrid > li {
   display: block;
   height: auto;
-  padding: 10px;
 }
-@media screen and (min-width: 20em) and (max-width: 38.4em) {
+
+@media screen and (min-width: 25em) and (max-width: 48em) {
   .l-blockGrid[class*="up--narrow"] > li {
     display: block;
     height: auto;
@@ -1672,7 +1710,7 @@ img, object, embed, video {
     float: left;
   }
   .l-blockGrid.l-blockGrid--3up--narrow > li {
-    width: 33.33333333%;
+    width: 33.3333333333%;
     display: block;
     height: auto;
     float: left;
@@ -1690,13 +1728,13 @@ img, object, embed, video {
     float: left;
   }
   .l-blockGrid.l-blockGrid--6up--narrow > li {
-    width: 16.66666667%;
+    width: 16.6666666667%;
     display: block;
     height: auto;
     float: left;
   }
   .l-blockGrid.l-blockGrid--7up--narrow > li {
-    width: 14.28571429%;
+    width: 14.2857142857%;
     display: block;
     height: auto;
     float: left;
@@ -1708,7 +1746,7 @@ img, object, embed, video {
     float: left;
   }
   .l-blockGrid.l-blockGrid--9up--narrow > li {
-    width: 11.11111111%;
+    width: 11.1111111111%;
     display: block;
     height: auto;
     float: left;
@@ -1720,19 +1758,20 @@ img, object, embed, video {
     float: left;
   }
   .l-blockGrid.l-blockGrid--11up--narrow > li {
-    width: 9.09090909%;
+    width: 9.0909090909%;
     display: block;
     height: auto;
     float: left;
   }
   .l-blockGrid.l-blockGrid--12up--narrow > li {
-    width: 8.33333333%;
+    width: 8.3333333333%;
     display: block;
     height: auto;
     float: left;
   }
 }
-@media screen and (min-width: 38.4em) {
+
+@media screen and (min-width: 48em) {
   .l-blockGrid > li {
     display: block;
     height: auto;
@@ -1745,7 +1784,7 @@ img, object, embed, video {
     width: 50%;
   }
   .l-blockGrid.l-blockGrid--3up > li {
-    width: 33.33333333%;
+    width: 33.3333333333%;
   }
   .l-blockGrid.l-blockGrid--4up > li {
     width: 25%;
@@ -1754,32 +1793,39 @@ img, object, embed, video {
     width: 20%;
   }
   .l-blockGrid.l-blockGrid--6up > li {
-    width: 16.66666667%;
+    width: 16.6666666667%;
   }
   .l-blockGrid.l-blockGrid--7up > li {
-    width: 14.28571429%;
+    width: 14.2857142857%;
   }
   .l-blockGrid.l-blockGrid--8up > li {
     width: 12.5%;
   }
   .l-blockGrid.l-blockGrid--9up > li {
-    width: 11.11111111%;
+    width: 11.1111111111%;
   }
   .l-blockGrid.l-blockGrid--10up > li {
     width: 10%;
   }
   .l-blockGrid.l-blockGrid--11up > li {
-    width: 9.09090909%;
+    width: 9.0909090909%;
   }
   .l-blockGrid.l-blockGrid--12up > li {
-    width: 8.33333333%;
+    width: 8.3333333333%;
   }
 }
 
-/*
-	Tabs
-
-	* Usage:
+/**
+ * Tabs
+ * =================================
+ */
+/**
+ * Define associated tab variables
+ */
+/**
+ * Tabs base styling
+ *
+ * Usage:
 	<ul class="tabs">
 		<li><a href="#tabs-example-1" class="is-active">Tab 1</a></li>
 		<li><a href="#tabs-example-2">Tab 2</a></li>
@@ -1798,80 +1844,103 @@ img, object, embed, video {
 	========================================================================== */
 .tabs {
   margin-bottom: 28px;
-  border-bottom: 2px solid #2ecc71;
+  border-bottom: 2px solid #16c98d;
 }
+
 .tabs:after {
   content: "";
   display: table;
   clear: both;
 }
+
 .tabs.tabs--alignRight li {
   float: right;
 }
-.tabs.tabs--alignCentre, .tabs.tabs--alignCenter {
+
+.tabs.tabs--alignCentre,
+.tabs.tabs--alignCenter {
   text-align: center;
 }
-.tabs.tabs--alignCentre > li, .tabs.tabs--alignCenter > li {
+
+.tabs.tabs--alignCentre > li,
+.tabs.tabs--alignCenter > li {
   display: inline;
   float: none;
 }
+
 .tabs > li {
   float: left;
   margin: 0 5px;
 }
+
 .tabs a {
   background-color: #95a5a6;
   border-radius: 4px 4px 0 0;
   color: #fff;
 }
+
 .tabs a.is-active {
-  background-color: #2ecc71;
+  background-color: #16c98d;
 }
 
 .l-tabsContent > li {
   display: none;
 }
+
 .l-tabsContent > li.is-active {
   display: block;
 }
 
 /**
  * Tables
+ * =================================
+ * Index:
+ * - Associated Table Variables
+ * - Default table Styles
+ * – Table modifiers:
+ *   - .table--condensed
+ *   - .table--bordered
+ *   - .table--rounded
+ *   - .table--striped
+ *   – .table--hover
+ * – .tableResponsive
  */
-table {
-  background-color: #f1f1f1;
-}
-
-th {
-  text-align: left;
-}
-
+/**
+ * Define associated Table variables
+ */
+/**
+ * Customizes the `.table` component with basic values, each used across all table variations.
+ */
 .table {
   width: 100%;
   max-width: 100%;
   margin-bottom: 28px;
-  border-padding: 0;
   border-spacing: 0;
+  background-color: #f1f1f1;
 }
-.table > thead > tr > th,
-.table > thead > tr > td,
-.table > tbody > tr > th,
-.table > tbody > tr > td,
-.table > tfoot > tr > th,
-.table > tfoot > tr > td {
+
+.table > thead > th,
+.table > thead > td,
+.table > tbody > th,
+.table > tbody > td,
+.table > tfoot > th,
+.table > tfoot > td {
   padding: 8px;
   line-height: 28px;
   vertical-align: top;
   border-top: 1px solid #ddd;
 }
-.table > thead > tr > th,
-.table > thead > tr > td {
+
+.table > thead th,
+.table > thead td {
   vertical-align: bottom;
   border-bottom: 2px solid #ddd;
 }
-.table > tfoot > tr > td {
+
+.table > tfoot td {
   border-top: 3px solid #ddd;
 }
+
 .table > caption + thead > tr:first-child > th,
 .table > caption + thead > tr:first-child > td,
 .table > colgroup + thead > tr:first-child > th,
@@ -1880,19 +1949,25 @@ th {
 .table > thead:first-child > tr:first-child > td {
   border-top: 0;
 }
+
 .table > tbody + tbody {
   border-top: 2px solid #ddd;
 }
+
 .table .table {
   background-color: #f1f1f1;
 }
 
-.table--condensed > thead > tr > th,
-.table--condensed > thead > tr > td,
-.table--condensed > tbody > tr > th,
-.table--condensed > tbody > tr > td,
-.table--condensed > tfoot > tr > th,
-.table--condensed > tfoot > tr > td {
+th {
+  text-align: left;
+}
+
+.table--condensed > thead th,
+.table--condensed > thead td,
+.table--condensed > tbody th,
+.table--condensed > tbody td,
+.table--condensed > tfoot th,
+.table--condensed > tfoot td {
   padding: 5px;
 }
 
@@ -1903,21 +1978,43 @@ th {
 .table--bordered {
   border: 2px solid #ddd;
 }
-.table--bordered > thead > tr > th,
-.table--bordered > thead > tr > td,
-.table--bordered > tbody > tr > th,
-.table--bordered > tbody > tr > td,
-.table--bordered > tfoot > tr > th,
-.table--bordered > tfoot > tr > td {
+
+.table--bordered > thead th,
+.table--bordered > thead td,
+.table--bordered > tbody th,
+.table--bordered > tbody td,
+.table--bordered > tfoot th,
+.table--bordered > tfoot td {
   border: 1px solid #ddd;
 }
-.table--bordered > thead > tr > th,
-.table--bordered > thead > tr > td {
+
+.table--bordered > thead th:first-child,
+.table--bordered > thead td:first-child,
+.table--bordered > tbody th:first-child,
+.table--bordered > tbody td:first-child,
+.table--bordered > tfoot th:first-child,
+.table--bordered > tfoot td:first-child {
+  border-left: 0;
+}
+
+.table--bordered > thead th:last-child,
+.table--bordered > thead td:last-child,
+.table--bordered > tbody th:last-child,
+.table--bordered > tbody td:last-child,
+.table--bordered > tfoot th:last-child,
+.table--bordered > tfoot td:last-child {
+  border-right: 0;
+}
+
+.table--bordered > thead th,
+.table--bordered > thead td {
   border-bottom-width: 2px;
 }
-.table--bordered > tfoot > tr > th,
-.table--bordered > tfoot > tr > td {
+
+.table--bordered > tfoot th,
+.table--bordered > tfoot td {
   border-top-width: 2px;
+  border-bottom: 0;
 }
 
 /**
@@ -1926,59 +2023,36 @@ th {
 .table--rounded {
   border-radius: 10px;
 }
-.table--rounded.table--bordered > thead > tr > th:first-child,
-.table--rounded.table--bordered > thead > tr > td:first-child,
-.table--rounded.table--bordered > tbody > tr > th:first-child,
-.table--rounded.table--bordered > tbody > tr > td:first-child,
-.table--rounded.table--bordered > tfoot > tr > th:first-child,
-.table--rounded.table--bordered > tfoot > tr > td:first-child {
+
+.table--rounded.table--bordered th:first-child,
+.table--rounded.table--bordered td:first-child {
   border-left: 0;
 }
-.table--rounded.table--bordered > thead > tr > th:last-child,
-.table--rounded.table--bordered > thead > tr > td:last-child,
-.table--rounded.table--bordered > tbody > tr > th:last-child,
-.table--rounded.table--bordered > tbody > tr > td:last-child,
-.table--rounded.table--bordered > tfoot > tr > th:last-child,
-.table--rounded.table--bordered > tfoot > tr > td:last-child {
+
+.table--rounded.table--bordered th:last-child,
+.table--rounded.table--bordered td:last-child {
   border-right: 0;
 }
-.table--rounded.table--bordered > tfoot > tr > th,
-.table--rounded.table--bordered > tfoot > tr > td {
-  border-bottom: none;
+
+.table--rounded.table--bordered > tfoot th,
+.table--rounded.table--bordered > tfoot td {
+  border-bottom: 0;
 }
 
 /**
  * Zebra-striping
  * Default zebra-stripe styles (alternating gray and transparent backgrounds)
  */
-.table--striped > tbody > tr:nth-child(odd) > td,
-.table--striped > tbody > tr:nth-child(odd) > th {
-  background-color: #f9f9f9;
+.table--striped tbody :nth-child(odd) th,
+.table--striped tbody :nth-child(odd) td {
+  background-color: #f9f9f9 !important;
 }
 
 /**
  * Hover effect
  */
-.table--hover > tbody > tr:hover > td,
-.table--hover > tbody > tr:hover > th {
+.table--hover tr:hover td, .table--hover tr:hover th {
   background-color: #f5f5f5;
-}
-
-/**
- * Table cell sizing
- * Reset default table behavior
- */
-table col[class*="col-"] {
-  position: static;
-  float: none;
-  display: table-column;
-}
-
-table td[class*="col-"],
-table th[class*="col-"] {
-  position: static;
-  float: none;
-  display: table-cell;
 }
 
 /**
@@ -1988,7 +2062,7 @@ table th[class*="col-"] {
  * If you need more responsive tables, consider Tablesaw by the Filament Group:
  * https://github.com/filamentgroup/tablesaw
  */
-@media screen and (max-width: 38.4em) {
+@media screen and (max-width: 48em) {
   .tableResponsive {
     width: 100%;
     margin-bottom: 21px;
@@ -2001,37 +2075,37 @@ table th[class*="col-"] {
   .tableResponsive > .table {
     margin-bottom: 0;
   }
-  .tableResponsive > .table > thead > tr > th,
-  .tableResponsive > .table > thead > tr > td,
-  .tableResponsive > .table > tbody > tr > th,
-  .tableResponsive > .table > tbody > tr > td,
-  .tableResponsive > .table > tfoot > tr > th,
-  .tableResponsive > .table > tfoot > tr > td {
+  .tableResponsive > .table > thead th,
+  .tableResponsive > .table > thead td,
+  .tableResponsive > .table > tbody th,
+  .tableResponsive > .table > tbody td,
+  .tableResponsive > .table > tfoot th,
+  .tableResponsive > .table > tfoot td {
     white-space: nowrap;
   }
   .tableResponsive > .table-bordered {
     border: 0;
   }
-  .tableResponsive > .table-bordered > thead > tr > th:first-child,
-  .tableResponsive > .table-bordered > thead > tr > td:first-child,
-  .tableResponsive > .table-bordered > tbody > tr > th:first-child,
-  .tableResponsive > .table-bordered > tbody > tr > td:first-child,
-  .tableResponsive > .table-bordered > tfoot > tr > th:first-child,
-  .tableResponsive > .table-bordered > tfoot > tr > td:first-child {
+  .tableResponsive > .table-bordered > thead th:first-child,
+  .tableResponsive > .table-bordered > thead td:first-child,
+  .tableResponsive > .table-bordered > tbody th:first-child,
+  .tableResponsive > .table-bordered > tbody td:first-child,
+  .tableResponsive > .table-bordered > tfoot th:first-child,
+  .tableResponsive > .table-bordered > tfoot td:first-child {
     border-left: 0;
   }
-  .tableResponsive > .table-bordered > thead > tr > th:last-child,
-  .tableResponsive > .table-bordered > thead > tr > td:last-child,
-  .tableResponsive > .table-bordered > tbody > tr > th:last-child,
-  .tableResponsive > .table-bordered > tbody > tr > td:last-child,
-  .tableResponsive > .table-bordered > tfoot > tr > th:last-child,
-  .tableResponsive > .table-bordered > tfoot > tr > td:last-child {
+  .tableResponsive > .table-bordered > thead th:last-child,
+  .tableResponsive > .table-bordered > thead td:last-child,
+  .tableResponsive > .table-bordered > tbody th:last-child,
+  .tableResponsive > .table-bordered > tbody td:last-child,
+  .tableResponsive > .table-bordered > tfoot th:last-child,
+  .tableResponsive > .table-bordered > tfoot td:last-child {
     border-right: 0;
   }
-  .tableResponsive > .table-bordered > tbody > tr:last-child > th,
-  .tableResponsive > .table-bordered > tbody > tr:last-child > td,
-  .tableResponsive > .table-bordered > tfoot > tr:last-child > th,
-  .tableResponsive > .table-bordered > tfoot > tr:last-child > td {
+  .tableResponsive > .table-bordered > tbody > th,
+  .tableResponsive > .table-bordered > tbody > td,
+  .tableResponsive > .table-bordered > tfoot tr:last-child > th,
+  .tableResponsive > .table-bordered > tfoot tr:last-child > td {
     border-bottom: 0;
   }
 }
@@ -2039,6 +2113,9 @@ table th[class*="col-"] {
 /**
  * Preformatted code
  * Code typography styles for the <code> and <pre> elements
+ */
+/**
+ * Define associated Code variables
  */
 code,
 pre {
@@ -2067,6 +2144,7 @@ pre {
   border-radius: 4px;
   white-space: pre;
 }
+
 pre code {
   padding: 0;
   color: #444;
@@ -2088,6 +2166,7 @@ pre code {
   text-align: center;
   height: 0;
 }
+
 .skipToContent a {
   position: relative;
   top: -100px;
@@ -2097,6 +2176,7 @@ pre code {
      -moz-transition: all 100ms ease-in-out;
           transition: all 100ms ease-in-out;
 }
+
 .skipToContent a:focus {
   top: 5px;
 }
@@ -2113,7 +2193,6 @@ pre code {
 ::-webkit-scrollbar-thumb {
   background: #8b8b8b;
   cursor: pointer;
-  border-radius: 5px;
 }
 
 /**
@@ -2140,6 +2219,7 @@ body {
   max-width: 1000px;
   margin: 0 auto;
 }
+
 .lt-ie9 .l-container {
   min-width: 1000px;
 }
@@ -2149,6 +2229,8 @@ body {
    ========================================================================== */
 [class^="icon-"], [class*=" icon-"] {
   speak: none;
+  background-size: contain;
+  background-position: center center;
 }
 
 .icon-large {
@@ -2221,7 +2303,9 @@ body {
   position: absolute;
   width: 1px;
 }
-.is-visuallyHidden.focusable:active, .is-visuallyHidden.focusable:focus {
+
+.is-visuallyHidden.focusable:active,
+.is-visuallyHidden.focusable:focus {
   clip: auto;
   height: auto;
   margin: 0;
@@ -2259,7 +2343,7 @@ body {
  * Responsive Utilities
  */
 * {
-  -webkit-tap-highlight-color: #3498db !important;
+  -webkit-tap-highlight-color: #16c98d !important;
 }
 
 /* A hack for HTML5 contenteditable attribute on mobile */
@@ -2281,6 +2365,12 @@ textarea[contenteditable] {
           backface-visibility: hidden;
 }
 
+.transition {
+  -webkit-transition: all 100ms ease-in-out;
+     -moz-transition: all 100ms ease-in-out;
+          transition: all 100ms ease-in-out;
+}
+
 /**
  * Print styles
  */
@@ -2295,58 +2385,48 @@ textarea[contenteditable] {
     box-shadow: none !important;
     text-shadow: none !important;
   }
-
   a:visited {
     text-decoration: underline;
   }
   a[href]:after {
     content: " (" attr(href) ")";
   }
-
   abbr[title]:after {
     content: " (" attr(title) ")";
   }
-
   /*
-   * Don't show links for images, or javascript/internal links
-   */
+	 * Don't show links for images, or javascript/internal links
+	 */
   .ir a:after,
   a[href^="javascript:"]:after,
   a[href^="#"]:after {
     content: "";
   }
-
   pre,
   blockquote {
     border: 1px solid #999;
     page-break-inside: avoid;
   }
-
   thead {
     display: table-header-group;
     /* h5bp.com/t */
   }
-
   tr,
   img {
     page-break-inside: avoid;
   }
-
   img {
     max-width: 100% !important;
   }
-
   @page {
-    margin: 0.5cm;
+    margin: .5cm;
   }
   p, h2, h3 {
     orphans: 3;
     widows: 3;
   }
-
   h2, h3 {
     page-break-after: avoid;
   }
 }
-
 /*# sourceMappingURL=kickoff.css.map */

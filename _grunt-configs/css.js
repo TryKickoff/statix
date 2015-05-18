@@ -13,8 +13,8 @@ module.exports.tasks = {
 				sourceMap : true
 			},
 			files: {
-				'<%=config.tempDir%>/css/<%=config.css.srcFile%>.css'       : '<%=config.css.scssDir%>/kickoff.scss',
-				'<%=config.tempDir%>/css/<%=config.css.srcFile%>-old-ie.css': '<%=config.css.scssDir%>/kickoff-old-ie.scss'
+				'<%=config.tempDir%>/css/<%=config.css.distFile%>.css'       : '<%=config.css.scssDir%>/kickoff.scss',
+				'<%=config.tempDir%>/css/<%=config.css.distFile%>-old-ie.css': '<%=config.css.scssDir%>/kickoff-old-ie.scss'
 			}
 		},
 		styleguide: {

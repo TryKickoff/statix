@@ -34,13 +34,14 @@ module.exports = {
 
 		// Renaming this changes the name of the generated JS file
 		// Make sure you update your template file
-		distFile : 'script.js' // <%=config.js.distFile%>
+		distFile : 'script.min.js' // <%=config.js.distFile%>
 	},
 
 
 	// Image-related Grunt vars
 	img : {
 		srcDir       : '<%=config.srcDir%>/img',      // <%=config.img.srcDir%>
+		distDir       : '<%=config.distDir%>/img',      // <%=config.img.srcDir%>
 		grunticonDir : '<%=config.srcDir%>/grunticon' // <%=config.img.grunticonDir%>
 	},
 

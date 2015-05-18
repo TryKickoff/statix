@@ -49,15 +49,15 @@ module.exports = function (grunt) {
 	 */
 	grunt.registerTask('serve', [
 		'clean:all',
-		'assemble',
 		'shimly',
 		'browserify:prod',
 		'sass',
 		'autoprefixer',
 		'clean:tempCSS',
-		'copy:dist',
+		'copy',
 		'icons',
 		'imagemin:images',
+		'assemble',
 		'browserSync:serve',
 		'watch'
 	]);
@@ -78,15 +78,15 @@ module.exports = function (grunt) {
 	 */
 	grunt.registerTask('dev', [
 		'clean:all',
-		'assemble',
 		'shimly',
 		'browserify:dev',
 		'sass',
 		'autoprefixer',
 		'clean:tempCSS',
-		'copy:dist',
 		'icons',
-		'imagemin:images'
+		'imagemin:images',
+		'copy',
+		'assemble'
 	]);
 
 
@@ -103,9 +103,9 @@ module.exports = function (grunt) {
 		'newer:autoprefixer',
 		'newer:csso',
 		'clean:tempCSS',
-		'copy:dist',
 		'icons',
-		'imagemin:images'
+		'imagemin:images',
+		'copy:statix'
 	]);
 
 
