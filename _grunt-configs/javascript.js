@@ -10,16 +10,28 @@ module.exports.tasks = {
 			src: ['<%=config.js.srcFile%>'],
 			dest: '<%=config.js.distDir%><%=config.js.distFile%>',
 			options : {
+				transform: [
+					'uglifyify',
+					{
+						"global" : true //minifies module code as well as application code – may need to ignore files that don’t play well with this
+					}
+				],
 				browserifyOptions : {
 					debug: true
-				}
+				},
+				watch: true
 			}
 		},
 		prod: {
 			src: ['<%=config.js.srcFile%>'],
 			dest: '<%=config.js.distDir%><%=config.js.distFile%>',
 			options : {
-				transform: ['uglifyify']
+				transform: [
+					'uglifyify',
+					{
+						"global" : true //minifies module code as well as application code – may need to ignore files that don’t play well with this
+					}
+				]
 			}
 		}
 	},
@@ -35,26 +47,10 @@ module.exports.tasks = {
 		shim: ['Array.forEach', 'Array.filter', 'Array.map', 'Function.bind', 'EventListener'],
 
 		// output location (relative to your grunt.js file location)
-		dest: '<%=config.js.distDir%>helpers/shims.js',
+		dest: '<%=config.srcDir%>/js/helpers/shims.js',
 
 		// minify the output (true or false)
 		minify: false
-	},
-
-
-	/**
-	 * JSHint
-	 * https://github.com/gruntjs/grunt-contrib-jshint
-	 * Manage the options inside .jshintrc file
-	 */
-	jshint: {
-		all: [
-			'js/**/*.js',
-			'!js/dist/**/*.js'
-		],
-		options: {
-			jshintrc: '.jshintrc'
-		}
 	}
 
 };

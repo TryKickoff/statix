@@ -8,27 +8,22 @@ module.exports.tasks = {
 	sass: {
 		kickoff: {
 			options: {
-				unixNewlines: true,
-				style: 'expanded',
-				lineNumbers: false,
-				debugInfo : false,
-				precision : 8,
-				loadPath : '<%=config.css.scssDir%>/'
+				outputStyle: 'expanded',
+				precision : 10,
+				sourceMap : true
 			},
 			files: {
-				'statix/dist/assets/css/<%=config.css.srcFile%>.css'       : '<%=config.css.scssDir%>/<%=config.css.srcFile%>.scss',
-				'statix/dist/assets/css/<%=config.css.srcFile%>-old-ie.css': '<%=config.css.scssDir%>/<%=config.css.srcFile%>-old-ie.scss'
+				'<%=config.tempDir%>/css/<%=config.css.srcFile%>.css'       : '<%=config.css.scssDir%>/kickoff.scss',
+				'<%=config.tempDir%>/css/<%=config.css.srcFile%>-old-ie.css': '<%=config.css.scssDir%>/kickoff-old-ie.scss'
 			}
 		},
 		styleguide: {
 			options: {
-				unixNewlines: true,
-				style: 'compressed',
-				precision : 8,
-				loadPath : '<%=config.css.scssDir%>/'
+				outputStyle: 'expanded',
+				precision : 10
 			},
 			files: {
-				'statix/dist/assets/css/styleguide.css': '<%=config.css.scssDir%>/styleguide.scss'
+				'<%=config.tempDir%>/css/styleguide.css': '<%=config.css.scssDir%>/styleguide.scss'
 			}
 		}
 	},
@@ -44,23 +39,15 @@ module.exports.tasks = {
 		options: {
 			// We are supporting the last 2 browsers, any browsers with >1% market share,
 			// and ensuring we support IE8+ with prefixes
-			browsers: ['> 5%', 'last 4 versions', 'firefox > 3.6', 'ie > 7'],
+			browsers: '<%=config.css.autoprefixer%>',
 			map: true
 		},
 
 		kickoff: {
 			expand: true,
 			flatten: true,
-			files: {
-				'statix/dist/assets/css/<%=config.css.srcFile%>.css'       : 'statix/dist/assets/css/<%=config.css.srcFile%>.css',
-				'statix/dist/assets/css/<%=config.css.srcFile%>-old-ie.css': 'statix/dist/assets/css/<%=config.css.srcFile%>-old-ie.css'
-			}
-		},
-
-		styleguide : {
-			files: {
-				'statix/dist/assets/css/styleguide.css' : 'statix/dist/assets/css/styleguide.css'
-			}
+			src: '<%=config.tempDir%>/css/*.css',
+			dest: '<%=config.css.distDir%>/'
 		}
 	},
 
@@ -76,8 +63,8 @@ module.exports.tasks = {
 				restructure: false //turns structural optimiations off as can mess up fallbacks http://bem.info/tools/optimizers/csso/description/
 			},
 			files: {
-				'statix/dist/assets/css/<%=config.css.srcFile%>.css'       : 'statix/dist/assets/css/<%=config.css.srcFile%>.css',
-				'statix/dist/assets/css/<%=config.css.srcFile%>-old-ie.css': 'statix/dist/assets/css/<%=config.css.srcFile%>-old-ie.css'
+				'<%=config.css.distDir%>/<%=config.css.distFile%>.css'       : '<%=config.css.distDir%>/<%=config.css.distFile%>.css',
+				'<%=config.css.distDir%>/<%=config.css.distFile%>-old-ie.css': '<%=config.css.distDir%>/<%=config.css.distFile%>-old-ie.css'
 			},
 
 		}

@@ -6,20 +6,9 @@ module.exports.tasks = {
 	* Clean some files
 	*/
 	clean: {
-		icons: ['img/icons'],
-		all: ['statix/dist/**/*.html']
-	},
-
-
-	/**
-	* Shell
-	* https://github.com/sindresorhus/grunt-shell
-	* Run shell commands
-	*/
-	shell: {
-		bowerinstall: {
-			command: 'bower install'
-		}
+		icons: ['<%=config.distDir%>/img/icons', '<%=config.tempDir%>/icons'],
+		tempCSS : ['<%=config.tempDir%>/css'],
+		all: ['<%= config.statix.dir%>/dist/**/*.html']
 	},
 
 
@@ -29,37 +18,51 @@ module.exports.tasks = {
 	 * Copy files and folders.
 	 */
 	copy: {
-		dist: {
+		statix: {
 			files: [
-				{ expand: true, cwd: './img', src: ['./**/*.*'], dest: 'statix/dist/assets/img' },
-				{ expand: true, cwd: './fonts', src: ['./**/*.*'], dest: 'statix/dist/assets/fonts' }
+				{
+					expand: true,
+					cwd: '<%=config.img.srcDir%>',
+					src: ['./**/*.*'],
+					dest: '<%=config.statix.dir%>/dist/assets/img'
+				},
+				{
+					expand: true,
+					cwd: '<%=config.srcDir%>/js',
+					src: ['./**/*.*'],
+					dest: '<%=config.statix.dir%>/dist/assets/js'
+				},
+				{
+					expand: true,
+					cwd: './<%=config.css.distDir%>',
+					src: ['./*.{css,map}'],
+					dest: '<%= config.statix.dir%>/dist/assets/css'
+				}
 			]
+		},
+		css: {
+			files: [{
+				expand: true,
+				cwd: './<%=config.css.distDir%>',
+				src: ['./*.{css,map}'],
+				dest: '<%= config.statix.dir%>/dist/assets/css'
+			}]
 		},
 		img: {
-			files: [
-				{ expand: true, cwd: './img', src: ['./**/*.*'], dest: 'statix/dist/assets/img' }
-			]
+			files: [{
+				expand: true,
+				cwd: '<%=config.img.srcDir%>',
+				src: ['./**/*.*'],
+				dest: '<%= config.statix.dir%>/dist/assets/img'
+			}]
 		},
-		fonts: {
-			files: [
-				{ expand: true, cwd: './fonts', src: ['./**/*.*'], dest: 'statix/dist/assets/fonts' }
-			]
-		}
-	},
-
-
-	/**
-	 * Grunt Photobox
-	 * https://github.com/stefanjudis/grunt-photoBox
-	 * Visual regression testing tool
-	 */
-	photobox: {
-		task: {
-			options: {
-				screenSizes : '<%=config.testing.visual.sizes%>',
-				urls        : '<%=config.testing.visual.urls%>'
-			}
+		js: {
+			files: [{
+				expand: true,
+				cwd: '<%=config.srcDir%>/js',
+				src: ['./**/*.*'],
+				dest: '<%= config.statix.dir%>/dist/assets/js'
+			}]
 		}
 	}
-
 };

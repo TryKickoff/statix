@@ -9,57 +9,48 @@ module.exports.tasks = {
 		scss: {
 			files: ['<%=config.css.scssDir%>/**/*.scss'],
 			tasks: [
-				'sass:kickoff',
-				'autoprefixer:kickoff'
-			]
-		},
-
-		"styleguide_scss": {
-			files: ['<%=config.css.scssDir%>/styleguide.scss'],
-			tasks: [
-				'sass:styleguide',
-				'autoprefixer:styleguide'
-			]
-		},
-
-
-		js: {
-			files: [
-				'js/**/*.js',
-				'!js/dist/**/*.js',
-				'!statix/assets/js/dist/**/*.js'
+				'compileCSS',
+				'clean:tempCSS',
+				'copy:css'
 			],
-			tasks: [
-				'browserify:dev'
-			]
-		},
-
-		assemble : {
-			files: ['statix/src/templates/**/*.{hbs,md}'],
-			tasks: ['assemble', 'newer:copy:dist'],
 			options: {
-				livereload: true
+				interrupt: true,
+				spawn: false
 			}
 		},
 
-		livereload: {
-			options: { livereload: true },
-			files: [
-				'statix/dist/css/*.css'
-			]
+		images : {
+			files: ['<%=config.img.srcDir%>/**/*.{svg,png,jpg,gif}'],
+			tasks: ['imagemin:images'],
+			options: {
+				interrupt: true
+			}
 		},
 
 		grunticon : {
-			files: ['img/src/*.svg', 'img/src/*.png'],
-			tasks: [
-				'clean:icons',
-				'svgmin',
-				'grunticon'
-			]
+			files: ['<%=config.img.grunticonDir%>/**/*.{svg,png,jpg,gif}'],
+			tasks: ['icons'],
+			options: {
+				interrupt: true
+			}
 		},
 
 		grunt: {
-			files: ['_grunt-configs/*.js', 'Gruntfile.js']
+			files: ['_grunt-configs/*.js', 'Gruntfile.js'],
+			options: {
+				reload: true
+			}
+		},
+
+		assemble : {
+			files: ['<%= config.statix.dir%>/src/templates/**/*.{hbs,md}'],
+			tasks: [
+				'assemble',
+				'newer:copy:statix'
+			],
+			options: {
+				livereload: true
+			}
 		}
 	}
 }

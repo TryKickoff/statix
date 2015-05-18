@@ -1,42 +1,6 @@
 module.exports.tasks = {
 
 	/**
-	 * Connect
-	 * https://github.com/gruntjs/grunt-contrib-connect
-	 * Start a static web server
-	 */
-	connect: {
-		server: {
-			options: {
-				// port: 9001,
-				// hostname: 'mysite.local',
-				open: true,
-				livereload: true,
-				base: 'statix/dist'
-			}
-		},
-		styleguide: {
-			options: {
-				base: 'statix/dist',
-				open: {
-					target: 'http://0.0.0.0:8000/docs/styleguide.html'
-				},
-				livereload: true
-			}
-		},
-		start: {
-			options: {
-				base: 'statix/dist',
-				open: {
-					target: 'http://0.0.0.0:8000/docs/index.html'
-				},
-				livereload: true
-			}
-		}
-	},
-
-
-	/**
 	 * browserSync
 	 * http://www.browsersync.io/docs/options/
 	 * http://www.browsersync.io/docs/grunt/
@@ -45,15 +9,36 @@ module.exports.tasks = {
 		serve: {
 			bsFiles: {
 				src: [
-					'statix/dist/assets/css/*.css',
-					'<%=config.js.distDir%>/**/*.js',
-					'statix/dist/**/*.html'
+
+						'<%= config.statix.dir%>/dist/assets/css/*.css',
+						'<%= config.statix.dir%>/dist/**/*.html',
+						'<%=config.js.distDir%>/**/*.js'
+
 				]
 			},
 			options: {
 				watchTask: true,
 				server: {
-					baseDir: "./statix/dist/"
+
+					baseDir: './<%= config.statix.dir%>/dist'
+
+				}
+			}
+		},
+
+
+		styleguide: {
+			bsFiles: {
+				src: [
+					'<%=config.distDir%>/**/*.*',
+					'*.html'
+				]
+			},
+			options: {
+				watchTask: true,
+				server: {
+					baseDir: './',
+					index: 'styleguide/index.html'
 				}
 			}
 		}
@@ -68,20 +53,20 @@ module.exports.tasks = {
 	 */
 	assemble: {
 		options: {
-			data: 'statix/src/**/*.{json,yml}',
-			assets: '<%= site.destination %>/assets',
-			helpers: ['helper-moment', 'handlebars-helper-eachitems', 'statix/src/helpers/helper-*.js'],
+			data: '<%= config.statix.dir%>/src/**/*.{json,yml}',
+			assets: '<%= config.statix.dir%>/dist/assets',
+			helpers: ['helper-moment', 'handlebars-helper-eachitems', '<%= config.statix.dir%>/src/helpers/helper-*.js'],
 
-			partials: ['statix/src/templates/includes/**/*.hbs'],
+			partials: ['<%= config.statix.dir%>/src/templates/includes/**/*.hbs'],
 			flatten: false,
 
 			layout: 'default.hbs',
-			layoutdir: 'statix/src/templates/layouts'
+			layoutdir: '<%= config.statix.dir%>/src/templates/layouts'
 		},
 
 		default: {
 			files: [{
-				cwd: './statix/src/templates/pages/',
+				cwd: './<%= config.statix.dir%>/src/templates/pages/',
 				dest: '<%= site.destination %>',
 				expand: true,
 				src: ['**/*.{hbs,md}']
