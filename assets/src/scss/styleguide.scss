@@ -1,76 +1,72 @@
 /**
  * Setup styleguide imports
  */
+@import "functions/functions";
+@import "mixins/mixins";
+
 @import "color-palette";
 @import "variables";
 
-@import "functions/functions";
-@import "mixins/mixins";
-$interface-type : 'Karla', "Helvetica Neue", Helvetica, Arial, sans-serif;
+$styleguide-color-primary: $color-primary;
+$styleguide-type: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-/* ==========================================================================
-   Styleguide styles
-   ========================================================================== */
+/**
+ * Styleguide styles
+ * Where possible, prefix all classnames with .sg
+ */
 body {
-	background-color: #f1f1f1;
-}
-.g-container {
-	padding: 30px;
 	background-color: #fff;
-	margin-top: 3%;
-	margin-bottom: 3%;
-}
-.g-row + .g-row {
-	margin-top: 30px;
-}
-.g-span12 + .g-span12 {
-	margin-top: 30px;
-}
-
-.well {
-	min-height: 90px;
-	padding: 30px;
-	background-color: #dbdbdb;
-	margin: 30px -30px 50px;
-	color: #333;
-}
-
-.well--inner {
-	margin-left: 0;
-	margin-right: 0;
-}
-
-.interfaceType {
-	font-family: $interface-type;
-}
-
-.section-heading {
-	border-bottom: 1px solid rgba(#000, 0.2);
-	padding-bottom: .3em;
-	@extend .interfaceType;
-	margin-top: 1em;
-}
-.interfaceType-subtle {
-	color: #888;
 }
 
 /**
- * Masthead
+ * Styleguide type styles
+ */
+.sg-interfaceType {
+	font-family: $styleguide-type;
+	font-weight: 300;
+}
+
+.sg-interfaceType--subtle {
+	color: #888;
+}
+
+.sg-sectionHeading {
+	@extend .sg-interfaceType;
+	color: $styleguide-color-primary;
+}
+
+
+/**
+ * Styleguide navigation style
  */
 
-.masthead, .footer {
-	background-color: slategray;
+/**
+ * Styleguide .page styles
+ */
+.sg-page {
+	overflow: hidden;
+	padding: 8% 0;
+}
+
+.sg-page--start {
+	background-color: $styleguide-color-primary;
+	padding: 15% 0;
+	color: #fff;
+}
+
+.sg-footer {
+	background-color: #181830;
 	color: #fff;
 	padding: 30px;
-	margin: 0 -30px 30px;
+	margin-top: 30px;
 
 	h1 {
-		margin-bottom: 0.2em;
+		margin-bottom: .2em;
 	}
 
 	a {
 		color: #fff;
-		border-bottom: 2px dashed rgba(#fff, 0.3);
+		border-bottom: 2px dashed rgba(#fff, .3);
 
 		&:hover {
 			border-bottom: 2px solid #fff;
@@ -82,109 +78,125 @@ body {
 	}
 }
 
-.footer {
-	margin-top: 30px;
-	margin-bottom: -30px;
-}
-.docsNav {
-	margin-bottom: 1em;
 
-	li {
-		margin-right: 1em;
-	}
 
-	.is-active {
-		// font-weight: bold;
-		border-bottom: 2px solid #fff;
-	}
+/**
+ * Colour swatches
+ */
+.sg-swatch {
+	text-align: center;
+	line-height: 30px;
+	margin: 10px 10px 0;
 }
 
-
-/*
-   Colours
-   ========================================================================== */
-.swatch {
-	height: 120px;
+.sg-swatch-color {
+	height: 60px;
 	padding: 15px;
-	margin-bottom: 0.5em;
+	@include font-size(13);
+	font-family: $font-family-mono;
 }
+
 @mixin swatch($color) {
 	color: $color;
-	&.bg {
+
+	.sg-swatch-color {
 		background-color: $color;
+
 		@if lightness($color) < 60 {
 			color: #fff;
 		} @else {
 			color: #444;
 		}
 
-		&:after {
+		@if lightness($color) > 90 {
+			border: #f1f1f1 solid 1px;
+		}
+
+		&:before {
 			content: '#{$color}';
+			display: block;
 		}
 	}
 }
-.color-text {
-	@include swatch($color-text);
-}
-.color-background {
-	@include swatch($color-bg);
-}
-.color-link {
-	@include swatch($color-link-default);
-}
-.color-link-hover {
+
+.sg-color-link-hover {
 	@include swatch($color-link-hover);
 }
-.color-primary {
+.sg-color-primary {
 	@include swatch($color-primary);
 }
-.color-secondary {
+.sg-color-secondary {
 	@include swatch($color-secondary);
 }
-.color-highlight {
+.sg-color-highlight {
 	@include swatch($color-highlight);
 }
+.sg-color-text {
+	@include swatch($color-text);
+}
+.sg-color-background {
+	@include swatch($color-bg);
+}
+.sg-color-border {
+	@include swatch($color-border);
+}
+.sg-color-link {
+	@include swatch($color-link-default);
+}
 
-.typography {
-	.info {
-		p {
-			-ms-word-wrap: break-word;
-			word-wrap: break-word;
-		}
+
+/**
+ * Typography
+ */
+.sg-type {
+	margin-bottom: 1em;
+}
+code {
+	border: 1px solid #ddd;
+	background-color: #F9F8F8;
+	@include font-size(11);
+}
+
+@mixin sgTypeTest($size) {
+	.sg-type-item {
+		@include font-size($size);
 	}
-	.example {
-		margin: 1em 0;
 
-		h1:after {
-			content: ' - #{$type-largest}px';
-		}
-		h2:after {
-			content: ' - #{$type-larger}px';
-		}
-		h3:after {
-			content: ' - #{$type-large}px';
-		}
-		h4:after {
-			content: ' - #{$type-base}px';
-		}
-		h5:after {
-			content: ' - #{$type-small}px';
-		}
-		h6:after {
-			content: ' - #{$type-small}px';
-		}
-
-		h1:after, h2:after, h3:after, h4:after, h5:after, h6:after {
-			text-transform: lowercase;
-		}
-
-		.interfaceType:after {
-			content: "";
-		}
+	code {
+			&:after { content: ' :: #{$size}px'; }
 	}
 }
 
-.typeSpecimen {
+
+.sg-type-micro {
+	@include sgTypeTest($type-micro);
+}
+.sg-type-smallest {
+	@include sgTypeTest($type-smallest);
+}
+.sg-type-smaller {
+	@include sgTypeTest($type-smaller);
+}
+.sg-type-small {
+	@include sgTypeTest($type-small);
+}
+.sg-type-base {
+	@include sgTypeTest($type-base);
+}
+.sg-type-large {
+	@include sgTypeTest($type-large);
+}
+.sg-type-larger {
+	@include sgTypeTest($type-larger);
+}
+.sg-type-largest {
+	@include sgTypeTest($type-largest);
+}
+.sg-type-jumbo {
+	@include sgTypeTest($type-jumbo);
+}
+
+.sg-typeSpecimen {
 	margin-bottom: 0;
 	margin-top: 0;
 	-ms-word-wrap: break-word;
@@ -200,29 +212,45 @@ body {
 		font-weight: normal;
 	}
 }
-h1.typeSpecimen:after {
-	content: "Font stack: #{$font-family-headings}";
+
+// h1.typeSpecimen:after { content: "Font stack: #{$font-family-headings}"; }
+// p.typeSpecimen:after  { content: "Font stack: #{$font-family-base}"; }
+
+.sg-typeSpecimen--primary {
+	@include font-size(30);
+	font-family: $font-family-headings;
+	font-weight: $font-weight-headings;
+
 }
-p.typeSpecimen:after {
-	content: "Font stack: #{$font-family-base}";
+
+.sg-typeSpecimen--secondary {
+	@include font-size(30);
+	font-family: $font-family-base;
+}
+
+.sg-typeSpecimen--giant {
+	@include font-size(120);
+	line-height: 1;
 }
 
 
 /**
- * Starter page
+ * Icons
  */
-.checklistInfo {
-	margin-bottom: 15px;
-	margin-left: 30px;
-	font-size: $font-size-base-px - 3;
+.icon-sg {
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	vertical-align: middle;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
 
-	li {
-		margin-bottom: 0.2em;
-	}
+.sg-favicon {
+	padding: 5px;
 
-	code,
-	pre {
-		@include font-size(14);
-		background-color: #cacaca; /* alpha: 1 */
+	img {
+		vertical-align: middle;
+		margin-right: 15px;
 	}
 }

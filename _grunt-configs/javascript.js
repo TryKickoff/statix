@@ -11,10 +11,12 @@ module.exports.tasks = {
 			dest: '<%=config.js.distDir%><%=config.js.distFile%>',
 			options : {
 				transform: [
-					'uglifyify',
-					{
-						"global" : true //minifies module code as well as application code – may need to ignore files that don’t play well with this
-					}
+					[
+						'uglifyify',
+						{
+							"global" : true
+						}
+					]
 				],
 				browserifyOptions : {
 					debug: true
@@ -27,11 +29,13 @@ module.exports.tasks = {
 			dest: '<%=config.js.distDir%><%=config.js.distFile%>',
 			options : {
 				transform: [
-					'uglifyify',
-					{
-						"global" : true //minifies module code as well as application code – may need to ignore files that don’t play well with this
-					}
-				]
+					[
+						'uglifyify',
+						{
+							"global" : true
+						}
+					]
+				],
 			}
 		}
 	},

@@ -19,7 +19,6 @@
 	</div>
  */
 
-
 .g-row {
 	width: 100%;
 	margin: 0 auto;
@@ -52,6 +51,7 @@
 		@if $grid-gutter-width > 0 {
 			margin-left: gutterCalc();
 		}
+
 		&:first-child {
 			margin-left: 0;
 		}
@@ -72,7 +72,7 @@
 
 	/**
 	 * Offset columns
-	 * http://tmwagency.github.io/kickoff/demos/grids.html#offset
+	 * http://trykickoff.github.io/demos/grids.html#offset
 	 */
 	@if $using-offsetcolumns == true {
 		@for $i from 1 to $grid-column-count {
@@ -88,7 +88,7 @@
 
 	/**
 	 * Source ordering (push & pull)
-	 * http://tmwagency.github.io/kickoff/demos/grids.html#source-ordering
+	 * http://trykickoff.github.io/demos/grids.html#source-ordering
 	 */
 	@if $using-push-pull-columns == true {
 		@for $i from 2 to $grid-column-count {

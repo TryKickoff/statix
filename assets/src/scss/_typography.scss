@@ -21,7 +21,7 @@
 
 html {
 	font-size: $font-size-base-narrow-px;
-	text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
 
 	@include respond-min($bp-rwd-text) {
 		font-size: $font-size-base-px;
@@ -76,8 +76,10 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: $font-weight-headings;
 	line-height: $line-height-headings;
 	text-rendering: optimizelegibility; // Fix the character spacing for headings
+	margin-top: 0;
+	margin-bottom: $baseline;
 
-	& small {
+	small {
 		font-weight: normal;
 	}
 }
@@ -86,41 +88,35 @@ h1, h2, h3, h4, h5, h6 {
 // For example: h3.h1 or h3.alpha
 h1, .h1, .alpha {
 	@include font-size($type-largest);
-	margin-top: 0;
 	margin-bottom: $baseline * 2;
 }
 
 h2, .h2, .beta {
 	@include font-size($type-larger);
-	margin-top: 0;
-	margin-bottom: $baseline;
 }
 
 h3, .h3, .gamma {
 	@include font-size($type-large);
-	margin-top: 0;
-	margin-bottom: $baseline;
-}
-
-h4, .h4, .delta,
-h5, .h5, .epsilon,
-h6, .h6, .zeta {
-	margin-top: 0;
-	margin-bottom: 0;
-	@include font-size($type-small);
 }
 
 h4, .h4, .delta {
 	@include font-size($type-base);
 }
 
+h5, .h5, .epsilon,
+h6, .h6, .zeta {
+	@include font-size($type-small);
+	margin-bottom: 0;
+}
+
+
 // h5, .h5, .epsilon {
 // }
 
-h6, .h6, .zeta {
-	text-transform: uppercase;
-}
+// h6, .h6, .zeta {
+// }
 
+// Only give these headings a margin-top if they are after other elements
 * + h1, * + .h1, * + .alpha,
 * + h2, * + .h2, * + .beta,
 * + h3, * + .h3, * + .gamma,
@@ -145,10 +141,12 @@ a {
 		color: $color-link-visited;
 		text-decoration: none;
 	}
+
 	&:hover, &:focus {
 		color: $color-link-hover;
 		//text-decoration: underline;
 	}
+
 	&:active {
 		color: $color-link-active;
 		//text-decoration: underline;
@@ -162,6 +160,7 @@ a {
 ul {
 	list-style-type: disc;
 }
+
 ol {
 	list-style-type: decimal;
 }
@@ -193,8 +192,7 @@ ul, ol {
 		}
 	}
 
-	ul,
-	ol {
+	ul, ol {
 		margin-bottom: 0;
 	}
 }
@@ -202,8 +200,7 @@ ul, ol {
 /**
  * Unstyled lists
  */
-.unstyled,
-nav ul, nav ol {
+.unstyled {
 	margin: 0;
 	padding: 0;
 	list-style: none;
@@ -214,31 +211,9 @@ nav ul, nav ol {
 /**
  * Definition lists
  */
-dl {
-	margin-bottom: $baseline;
-}
-dt {
-	font-weight: $font-weight-bold;
-}
-dd {
-	margin-left: $baseline;
-}
-
-.dl-horizontal {
-	@include clearfix;
-
-	dt {
-		@include text-overflow();
-		float: left;
-		clear: left;
-		width: 220px;
-		text-align: right;
-	}
-
-	dd {
-		margin-left: 240px;
-	}
-}
+dl { margin-bottom: $baseline; }
+dt { font-weight: $font-weight-bold; }
+dd { margin-left: $baseline; }
 
 
 /**
@@ -256,6 +231,7 @@ hr {
 strong, b {
 	font-weight: $font-weight-bold;
 }
+
 em, i {
 	font-style: italic;
 }
@@ -274,13 +250,13 @@ blockquote {
 	margin: $baseline;
 	border-left: 4px solid lighten(#000, 80%);
 
-	& p {
+	p {
 		margin-bottom: 0;
 		@include font-size($type-base);
 		font-weight: 300;
 	}
 
-	& small {
+	small {
 		display: block;
 		color: lighten(#000, 70%);
 
@@ -297,13 +273,6 @@ blockquote {
 	&:after {
 		content: "";
 	}
-}
-
-// Addresses
-address {
-	display: block;
-	margin-bottom: $baseline;
-	font-style: normal;
 }
 
 cite {
@@ -331,8 +300,8 @@ sub, sup {
 	vertical-align: baseline;
 }
 
-sup { top: -0.5em; }
-sub { bottom: -0.25em; }
+sup { top: -.5em; }
+sub { bottom: -.25em; }
 
 samp {
 	font-family: $font-family-mono;
@@ -346,9 +315,11 @@ samp {
 .text-center {
 	text-align: center;
 }
+
 .text-left {
 	text-align: left;
 }
+
 .text-right {
 	text-align: right;
 }

@@ -4,9 +4,6 @@ module.exports = function (grunt) {
 
 	var opn = require('opn');
 
-	// Load grunt tasks automatically
-	require('load-grunt-tasks')(grunt, {pattern: ["grunt-*", "chotto"]});
-
 
 	var options = {
 		pkg: require('./package'), // <%=pkg.name%>
@@ -16,14 +13,13 @@ module.exports = function (grunt) {
 		config : require('./_grunt-configs/config.js')
 	};
 
+	require('load-grunt-tasks')(grunt, {pattern: ["grunt-*", "chotto", "assemble"]});
+
 	// Load grunt configurations automatically
 	var configs = require('load-grunt-configs')(grunt, options);
 
 	// Define the configuration for all the tasks
 	grunt.initConfig(configs);
-
-	//load assemble task for compiling static templates
-	grunt.loadNpmTasks('assemble');
 
 
 

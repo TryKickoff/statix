@@ -28,11 +28,13 @@ module.exports = {
 
 	// Javascript-related Grunt vars
 	js : {
+		srcFile : '<%=config.srcDir%>/js/script.js',// <%=config.js.srcFile%>
+
 		distDir  : '<%=config.distDir%>/js/', // <%=config.js.distDir%>
 
 		// Renaming this changes the name of the generated JS file
 		// Make sure you update your template file
-		distFile : 'script.min.js' // <%=config.js.distFile%>
+		distFile : 'script.js' // <%=config.js.distFile%>
 	},
 
 

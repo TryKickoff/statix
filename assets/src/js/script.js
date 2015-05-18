@@ -2,55 +2,30 @@
 		TMW - (Author Name Here)
 */
 
-// Create a closure to maintain scope of the '$' and KO (Kickoff)
-;(function(KO, $) {
+// --------------------------------------------- //
+// DEFINE GLOBAL LIBS                            //
+// --------------------------------------------- //
+// Uncomment the line below to expose jQuery as a global object to the usual places
+// window.jQuery = window.$ = require('./libs/jquery/jquery-1.10.2.js');
 
-	$(function() {
-		// Any globals go here in CAPS (but avoid if possible)
+// force compilation of global libs that don't return a value.
+require("./helpers/log");
+require("./helpers/shims");
 
-		// follow a singleton pattern
-		// (http://addyosmani.com/resources/essentialjsdesignpatterns/book/#singletonpatternjavascript)
+//initialise KO object
+var KO = {};
 
-		KO.Config.init();
+KO.Config = {
+	variableX : '', // please don't keep me - only for example syntax!
 
-	});// END DOC READY
+	init : function () {
+		console.debug('Kickoff is running');
 
-
-	/* Optional triggers
-
-	// WINDOW.LOAD
-	$(window).load(function() {
-
-	});
-
-	// WINDOW.RESIZE
-	$(window).resize(function() {
-
-	});
-
-	*/
+		// Example module include
+		KO.UI = require('./modules/UI');
+		KO.UI.init();
+	}
+};
 
 
-
-	KO.Config = {
-		variableX : '', // please don't keep me - only for example syntax!
-
-		init : function () {
-			console.debug('Kickoff is running');
-		}
-	};
-
-	// Example module
-	/*
-	KO.Ui = {
-		init : function() {
-			KO.Ui.modal();
-		},
-
-		modal : function() {
-
-		}
-	};
-	*/
-
-})(window.KO = window.KO || {}, jQuery);
+KO.Config.init();
