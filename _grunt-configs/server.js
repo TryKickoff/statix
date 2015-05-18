@@ -69,7 +69,7 @@ module.exports.tasks = {
 				cwd: './<%= config.statix.dir%>/src/templates/pages/',
 				dest: '<%= site.destination %>',
 				expand: true,
-				src: ['**/*.{hbs,md}']
+				src: ['**/*.hbs']
 			}]
 		}
 	}
