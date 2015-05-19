@@ -325,7 +325,7 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
 
 h1, .h1, .alpha {
   font-size: 40px;
-  font-size: 1.953125rem;
+  font-size: 2rem;
   margin-bottom: 56px;
 }
 
@@ -335,7 +335,7 @@ h1:first-child, .h1:first-child, .alpha:first-child {
 
 h2, .h2, .beta {
   font-size: 32px;
-  font-size: 1.5625rem;
+  font-size: 1.6rem;
 }
 
 h3, .h3, .gamma {
