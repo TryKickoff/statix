@@ -55,7 +55,11 @@ module.exports.tasks = {
 		options: {
 			data: '<%= config.statix.dir%>/src/**/*.{json,yml}',
 			assets: '<%= config.statix.distDir%>/assets',
-			helpers: ['helper-moment', 'handlebars-helper-eachitems', '<%= config.statix.dir%>/src/helpers/helper-*.js'],
+			helpers: [
+				'helper-moment',
+				'handlebars-helper-eachitems',
+				'<%= config.statix.dir%>/src/helpers/helper-*.js'
+			],
 
 			partials: ['<%= config.statix.dir%>/src/templates/includes/**/*.hbs'],
 			flatten: false,
