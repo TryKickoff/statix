@@ -158,6 +158,8 @@ code {
 }
 
 @mixin sgTypeTest($size) {
+	$size: ceil($size);
+
 	.sg-type-item {
 		@include font-size($size);
 	}

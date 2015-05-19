@@ -82,6 +82,10 @@ h1, h2, h3, h4, h5, h6 {
 	small {
 		font-weight: normal;
 	}
+
+	&:last-child {
+		margin-bottom: 0;
+	}
 }
 
 // Use the helper classes to emulate styles for another element
@@ -89,6 +93,10 @@ h1, h2, h3, h4, h5, h6 {
 h1, .h1, .alpha {
 	@include font-size($type-largest);
 	margin-bottom: $baseline * 2;
+
+	&:first-child {
+		margin-top: $baseline * 2;
+	}
 }
 
 h2, .h2, .beta {

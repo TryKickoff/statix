@@ -125,9 +125,9 @@ That’s cool – Statix has been built so the you can do this very easily.
 
 ### To replace the SCSS
 
-Delete the files in the /scss folder, replacing them with your framework of choice.
+Delete the files in the /assets/src/scss folder, replacing them with your framework of choice.
 
-Next, go to `/_grunt-configs/css.js` in the root of the project and change all references of `kickoff.scss` and `kickoff.css` to whatever you have decided to call your main SCSS file.
+Next, go to `/_grunt-configs/config.js` in the root of the project and change the name of the compiled `distFile` to whatever you want to.
 
 Finally, change the reference to the compiled CSS file in the `html_start.hbs` in `statix/src/templates/includes`
 

@@ -1,0 +1,27 @@
+---
+title: Kickoff Setup checklist
+subtitle:
+layout: docs.hbs
+docs: true
+
+content: <%= site.markdownDir %>example-markdown-chunk.md
+---
+
+{{md content }}
+
+{{#markdown}}
+
+Alternatively you can also write your markdown inline, using the inbuilt markdown helper tags such that:
+
+```
+\{{#markdown}}
+…
+\{{/markdown}}
+```
+---
+
+### Using Markdown to generate your HTML content
+
+Markdown has extensive documentation online explaining how to generate HTML content using it’s shorthand syntax.
+
+{{/markdown}}

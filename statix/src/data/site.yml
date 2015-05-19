@@ -1,7 +1,5 @@
 ###
-# Site variables
+# Global Site variables
 ###
 
-production: <%= production %>
-
-destination: ./statix/dist
+markdownDir: ./statix/src/templates/includes/md/

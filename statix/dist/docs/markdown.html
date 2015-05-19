@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js"> <!--<![endif]-->
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title>Statix</title>
+		<title>Statix – Documentation</title>
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
 
@@ -19,10 +19,13 @@
 			<link rel="stylesheet" href="/assets/css/styleguide.css">
 		
 
-		<!-- For mobile icons etc, consider:
-			 * https://gist.github.com/mrmartineau/6403816
-			 * http://iconifier.net
-		-->
+		<!-- Grunticon SVG detection script. http://github.com/filamentgroup/ Remove if not using Grunticon. -->
+		<script>
+			(function(e){function t(t,n,r,o){"use strict";function a(){for(var e,t=0;m.length>t;t++)m[t].href&&m[t].href.indexOf(i.href)>-1&&(e=!0);e?i.media=r||"all":setTimeout(a)}var i=e.document.createElement("link"),c=n||e.document.getElementsByTagName("script")[0],m=e.document.styleSheets;return i.rel="stylesheet",i.href=t,i.media="only x",o&&(i.onload=o),c.parentNode.insertBefore(i,c),a(),i}var n=function(r,o){"use strict";if(r&&3===r.length){var a=e.navigator,i=e.Image,c=!(!document.createElementNS||!document.createElementNS("http://www.w3.org/2000/svg","svg").createSVGRect||!document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image","1.1")||e.opera&&-1===a.userAgent.indexOf("Chrome")||-1!==a.userAgent.indexOf("Series40")),m=new i;m.onerror=function(){n.method="png",n.href=r[2],t(r[2])},m.onload=function(){var e=1===m.width&&1===m.height,a=r[e&&c?0:e?1:2];n.method=e&&c?"svg":e?"datapng":"png",n.href=a,t(a,null,null,o)},m.src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==",document.documentElement.className+=" grunticon"}};n.loadCSS=t,e.grunticon=n})(this);
+			grunticon(["/assets/dist/img/icons/icons.data.svg.css", "/assets/dist/img/icons/icons.data.png.css", "/assets/dist/img/icons/icons.fallback.css"]);
+		</script>
+		<noscript><link href="/assets/dist/img/icons/icons.fallback.css" rel="stylesheet"></noscript>
+		<!-- /End Grunticon detection & injection script -->
 
 		<script src="/assets/js/libs/modernizr.min.js"></script>
 	</head>
@@ -30,23 +33,39 @@
 
 
 	 <div class="l-container">
-		<!-- nav partial -->
+		<!-- header partial -->
 				<!--  ==============  -->
 		<!--  === Masthead ===  -->
 		<!--  ==============  -->
 		<header class="masthead" role="banner">
-			<h1>Kickoff Setup checklist</h1>
-			<p></p>
+			<h1 class="sg-sectionHeading">Kickoff Setup checklist</h1>
+			
 		</header>
+
 
 		<!--  ====================  -->
 		<!--  === Main content ===  -->
 		<!--  ====================  -->
-		<div role="main">
+		<div class="sg-page" role="main">
 
 			
 
-<h2 id="this-is-a-very-quick-documentation-guide-to-some-basic-markdown-operators-and-styles-">This is a very quick documentation guide to some basic markdown operators and styles.</h2>
+<h2 id="using-markdown">Using Markdown</h2>
+<p>This is a very brief guide detailing how to use Markdown in your assemble project</p>
+<hr>
+<h3 id="including-markdown-in-your-template-files">Including Markdown in your template files</h3>
+<p>If you would like to use Markdown in your static template files, there are a number of ways to do so.</p>
+<p>You can either assign your markdown to a YFM variable – if you look at the underlying code for this page, this section of the document does this.</p>
+<hr>
+
+
+<p>Alternatively you can also write your markdown inline, using the inbuilt markdown helper tags such that:</p>
+<pre><code>{{#markdown}}
+…
+{{/markdown}}</code></pre>
+<hr>
+<h3 id="using-markdown-to-generate-your-html-content">Using Markdown to generate your HTML content</h3>
+<p>Markdown has extensive documentation online explaining how to generate HTML content using it’s shorthand syntax.</p>
 
 
 
@@ -83,3 +102,4 @@
 
 	</body>
 </html>
+

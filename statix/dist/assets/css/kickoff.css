@@ -324,14 +324,22 @@ h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
   font-weight: normal;
 }
 
+h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:last-child {
+  margin-bottom: 0;
+}
+
 h1, .h1, .alpha {
-  font-size: 39.0625px;
+  font-size: 40px;
   font-size: 1.953125rem;
   margin-bottom: 56px;
 }
 
+h1:first-child, .h1:first-child, .alpha:first-child {
+  margin-top: 56px;
+}
+
 h2, .h2, .beta {
-  font-size: 31.25px;
+  font-size: 32px;
   font-size: 1.5625rem;
 }
 

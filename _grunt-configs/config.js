@@ -66,6 +66,7 @@ module.exports = {
 	},
 
 	statix : {
-		dir : 'statix' // <%= config.statix.dir%>
+		dir : 'statix', // <%= config.statix.dir%>
+		distDir: './statix/dist'
 	}
 };

@@ -54,7 +54,7 @@ module.exports.tasks = {
 	assemble: {
 		options: {
 			data: '<%= config.statix.dir%>/src/**/*.{json,yml}',
-			assets: '<%= config.statix.dir%>/dist/assets',
+			assets: '<%= config.statix.distDir%>/assets',
 			helpers: ['helper-moment', 'handlebars-helper-eachitems', '<%= config.statix.dir%>/src/helpers/helper-*.js'],
 
 			partials: ['<%= config.statix.dir%>/src/templates/includes/**/*.hbs'],
@@ -67,7 +67,7 @@ module.exports.tasks = {
 		default: {
 			files: [{
 				cwd: './<%= config.statix.dir%>/src/templates/pages/',
-				dest: '<%= site.destination %>',
+				dest: '<%= config.statix.distDir %>',
 				expand: true,
 				src: ['**/*.hbs']
 			}]
