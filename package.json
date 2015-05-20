@@ -3,7 +3,7 @@
   "title": "Statix",
   "description": "Making the process of creating static HTML templates even quicker and easier.",
   "version": "3.0.0",
-  "homepage": "https://github.com/tmwagency/statix",
+  "homepage": "https://github.com/TryKickoff/statix",
   "authors": [
     {
       "name": "Ashley Nolan",
@@ -15,15 +15,15 @@
     },
     {
       "name": "Contributors",
-      "url": "https://github.com/tmwagency/statix/graphs/contributors"
+      "url": "https://github.com/TryKickoff/statix/graphs/contributors"
     }
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/tmwagency/statix.git"
+    "url": "git://github.com/TryKickoff/statix.git"
   },
   "bugs": {
-    "url": "https://github.com/tmwagency/statix/issues"
+    "url": "https://github.com/TryKickoff/statix/issues"
   },
   "license": "MIT",
   "engines": {

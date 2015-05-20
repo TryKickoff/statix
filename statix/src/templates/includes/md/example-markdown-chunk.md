@@ -1,5 +1,3 @@
-## Using Markdown
-
 This is a very brief guide detailing how to use Markdown in your assemble project
 
 ---
