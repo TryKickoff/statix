@@ -94,13 +94,10 @@ Source maps are also created for both the Javascript and Sass. Javascript is com
 
 ## Installing Statix dependencies
 
-[Ruby](https://www.ruby-lang.org/en/) v2 is needed to use Statix. Update using [rvm](http://rvm.io/) or [brew](http://brew.sh) (if you use a Mac), Windows users can install Ruby via [the Windows installer](http://rubyinstaller.org/downloads/), and Linux users can install it via their package manager, then install the packages below:
-
-* Install Sass globally - `gem install sass --pre`
 * Install Node from [nodejs.org](http://nodejs.org/)
 * Install Grunt CLI - `npm install -g grunt-cli`
 
-Once these dependencies are installed, see 'Getting started with Statix' for instructions on runnign your project.
+Once these dependencies are installed, see 'Getting started with Statix' for instructions on running your project.
 
 
 ---
