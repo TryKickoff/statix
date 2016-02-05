@@ -1,8 +1,7 @@
 module.exports.register = function (Handlebars, options) {
-  'use strict';
+	'use strict';
 
-  Handlebars.registerHelper('replaceStr', function (haystack, needle, replacement) {
-    return haystack.replace(needle, replacement);
-  });
-  //}
-};
+	Handlebars.registerHelper('replaceStr', function (haystack, needle, replacement) {
+	  return haystack.replace(needle, replacement);
+	});
+}

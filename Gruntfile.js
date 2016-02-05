@@ -13,7 +13,7 @@ module.exports = function (grunt) {
 		config : require('./_grunt-configs/config.js')
 	};
 
-	require('load-grunt-tasks')(grunt, {pattern: ["grunt-*", "chotto", "assemble"]});
+	require('load-grunt-tasks')(grunt, {pattern: ["grunt-*", "chotto"]});
 
 	// Load grunt configurations automatically
 	var configs = require('load-grunt-configs')(grunt, options);
@@ -32,7 +32,6 @@ module.exports = function (grunt) {
 	 * grunt dev        : run uglify, sass:kickoff & autoprefixer:kickoff
 	 * grunt deploy     : run jshint, uglify, sass:kickoff and csso
 	 * grunt styleguide : watch js & scss, run a local server for editing the styleguide
-	 * grunt icons      : generate the icons. uses svgmin and grunticon
 	 * grunt checks     : run jshint, scsslint and html validator
 		 ========================================================================== */
 
@@ -55,7 +54,6 @@ module.exports = function (grunt) {
 		'autoprefixer',
 		'clean:tempCSS',
 		'copy',
-		'icons',
 		'imagemin:images',
 		'assemble',
 		'browserSync:serve',
@@ -83,7 +81,6 @@ module.exports = function (grunt) {
 		'sass',
 		'autoprefixer',
 		'clean:tempCSS',
-		'icons',
 		'imagemin:images',
 		'copy',
 		'assemble'
@@ -103,7 +100,6 @@ module.exports = function (grunt) {
 		'newer:autoprefixer',
 		'newer:csso',
 		'clean:tempCSS',
-		'icons',
 		'imagemin:images',
 		'copy:statix'
 	]);
@@ -119,22 +115,11 @@ module.exports = function (grunt) {
 		'sass',
 		'autoprefixer',
 		'clean:tempCSS',
-		'icons',
 		'imagemin:images',
 		'browserSync:styleguide',
 		'watch'
 	]);
 
-
-	/**
-	 * GRUNT ICONS * A task to create all icons using grunticon
-	 * run clean, svgmin and grunticon
-	 */
-	grunt.registerTask('icons', [
-		'clean:icons',
-		'imagemin:grunticon',
-		'grunticon'
-	]);
 
 
 	/**

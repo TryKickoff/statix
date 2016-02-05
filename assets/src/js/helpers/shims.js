@@ -2,9 +2,8 @@
 Included shims: Array.forEach,Array.filter,Array.map,Function.bind,EventListener
 */
 
-/*
-    Array.prototype.forEach()
-*/
+// Production steps of ECMA-262, Edition 5, 15.4.4.18
+// Reference: http://es5.github.io/#x15.4.4.18
 if (!Array.prototype.forEach) {
     Array.prototype.forEach = function(t, e) {
         var n, r;
@@ -22,7 +21,7 @@ if (!Array.prototype.forEach) {
             throw new TypeError(t + " is not a function");
         }
         // 5. If thisArg was supplied, let T be thisArg; else let T be undefined.
-        if (e) {
+        if (arguments.length > 1) {
             n = e;
         }
         // 6. Let k be 0
@@ -54,10 +53,14 @@ if (!Array.prototype.forEach) {
 if (!Array.prototype.filter) {
     Array.prototype.filter = function(t) {
         "use strict";
-        if (this === void 0 || this === null) throw new TypeError();
+        if (this === void 0 || this === null) {
+            throw new TypeError();
+        }
         var e = Object(this);
         var n = e.length >>> 0;
-        if (typeof t !== "function") throw new TypeError();
+        if (typeof t !== "function") {
+            throw new TypeError();
+        }
         var r = [];
         var i = arguments.length >= 2 ? arguments[1] : void 0;
         for (var o = 0; o < n; o++) {
@@ -68,7 +71,9 @@ if (!Array.prototype.filter) {
                 //       properties on Object.prototype and Array.prototype.
                 //       But that method's new, and collisions should be
                 //       rare, so use the more-compatible alternative.
-                if (t.call(i, a, o, e)) r.push(a);
+                if (t.call(i, a, o, e)) {
+                    r.push(a);
+                }
             }
         }
         return r;
@@ -101,7 +106,7 @@ if (!Function.prototype.bind) {
             throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");
         }
         var e = Array.prototype.slice.call(arguments, 1), n = this, r = function() {}, i = function() {
-            return n.apply(this instanceof r && t ? this : t, e.concat(Array.prototype.slice.call(arguments)));
+            return n.apply(this instanceof r ? this : t, e.concat(Array.prototype.slice.call(arguments)));
         };
         r.prototype = this.prototype;
         i.prototype = new r();
@@ -109,7 +114,7 @@ if (!Function.prototype.bind) {
     };
 }
 
-// EventListener | MIT/GPL2 | https://github.com/jonathantneal/EventListener
+// EventListener | CC0 | github.com/jonathantneal/EventListener
 this.Element && Element.prototype.attachEvent && !Element.prototype.addEventListener && function() {
     function t(t, e) {
         Window.prototype[t] = HTMLDocument.prototype[t] = Element.prototype[t] = e;

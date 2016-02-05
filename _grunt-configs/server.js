@@ -57,6 +57,8 @@ module.exports.tasks = {
 			assets: '<%= config.statix.distDir%>/assets',
 			helpers: [
 				'helper-moment',
+				'helper-markdown',
+				'helper-md',
 				'handlebars-helper-eachitems',
 				'<%= config.statix.dir%>/src/helpers/helper-*.js'
 			],
