@@ -7,11 +7,21 @@ docs: true
 content: <%= site.markdownDir %>example-markdown-chunk.md
 ---
 
-{{md content }}
-
 {{#markdown}}
 
-Alternatively you can also write your markdown inline, using the inbuilt markdown helper tags such that:
+This is a very brief guide detailing how to use Markdown in your assemble project
+
+---
+
+### Including Markdown in your template files
+
+If you would like to use Markdown in your static template files, there are a number of ways to do so.
+
+You can either assign your markdown to a YFM variable – if you look at the underlying code for this page, this section of the document does this.
+
+---
+
+The easiest way to use markdown in your templates is by looking at how this page, and the other documentation pages, do so.  They use the a handlebars helper so that you can wrap markdown like this:
 
 ```
 \{{#markdown}}
@@ -19,6 +29,9 @@ Alternatively you can also write your markdown inline, using the inbuilt markdow
 \{{/markdown}}
 ```
 ---
+
+This will then generate HTML from any markdown inside these tags.
+
 
 ### Using Markdown to generate your HTML content
 

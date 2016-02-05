@@ -1,49 +1,46 @@
 ![](http://i.imgur.com/ACbqfMq.jpg)
 
-[Statix](https://github.com/TryKickoff/statix) makes creating and working with static HTML templates quick and easy.
-
-## Why do I need Statix in my life?
-
-Have you ever wanted the power of reusing snippets in your HTML but don’t know where to start?
-
-Do you want a good base front-end structure for your project without throwing the whole of Bootstrap it?
-
-Statix has your back.
-
+[Statix](https://github.com/TryKickoff/statix) – a base setup that makes creating templates and static sites quick and easy.
 
 ---
 
 ## Features
 
+Have you ever wanted the power of reusing snippets in your HTML but don’t know where to start?
+
+Do you want a good base front-end structure for your project without throwing the whole of Bootstrap it?
+
 Here are some of the simple problems that Statix helps you solve:
-
-### Code snippets
-
- Statix leverages Assemble to give you the ability to write a snippet of HTML once and then include it across multiple HTML files.
-
- Editing a navigation link across 10 static HTML pages?  No problem.  Want to change a piece of footer text across the whole of your site templates?  Easy!
-
- Simply manage one code snippet and include it wherever you want it to appear in each HTML template.
-
-
-### Project Structure
-
-Statix uses Kickoff and Grunt to give you a minimal starting point for your front-end projects.  Just enough structure – no extra bloat.
-
-### Write content in Markdown
-
-One of the biggest pains in the ass is having to write content for static sites or templates in HTML.
-
-Statix brings together the power of using a templating language (such as Handlebars), with the flexibility of being able to write content using [Markdown](http://daringfireball.net/projects/markdown/).
-
-This means that for small site builds (ones that don’t need a CMS) content editors can update a much more readable markdown file, rather than dig into HTML syntax.
 
 
 ### Fast starting point
 
 Statix gives you a great base to get up and running as quickly as possible.  Whether templating a full site or just spinning up a prototype, Statix tries to get out of your way so you can start coding.
 
-There’s no complicated config to mess around with before you start.  Once installed, simply typing `grunt serve` into the terminal will spin up a local server that you can see your project change in realtime as you edit it.
+There’s no complicated config to mess around with before you start.  Simply typing `grunt serve` into the terminal to spin up a local server get started – all the base setup is done for you!
+
+
+### Project Structure
+
+Statix uses [Kickoff](http://trykickoff.com/) and [Grunt](http://gruntjs.com/) to give you a minimal starting point for your front-end projects.  Just enough structure – no extra bloat.  If you want to switch out Kickoff for a different framework like Bootstrap or Foundation, doing so is [really simple](#alt-frameworks).
+
+
+### Code snippets
+
+ Statix leverages Assemble – an excellent Statix Site generator – to give you the ability to write a snippet of HTML once and then include it across multiple HTML files.
+
+ Editing a navigation link across 10 static HTML pages?  No problem.  Want to change a piece of footer text across the whole of your site templates?  Easy!
+
+ Simply manage one code snippet and include it wherever you want it to appear in each HTML template.
+
+
+### Write content in Markdown
+
+One of the biggest pains on simple projects is having to write content for static sites or templates in HTML.
+
+Statix brings together the power of using a templating language (such as Handlebars), with the flexibility of being able to write content using [Markdown](http://daringfireball.net/projects/markdown/).
+
+This means that for small site builds (ones that don’t need a CMS) content editors can update a much more readable markdown file, rather than dig into HTML syntax.
 
 
 ### Extensibility
@@ -75,13 +72,15 @@ Should you wish to rip out the CSS (or SCSS) and JS and replace it with a struct
 
 ---
 
+<div id="getting-started"></div>
+
 ## Getting started with Statix
 
 1. Download or clone the git repo. To clone run `git clone https://github.com/TryKickoff/statix.git your-project-folder`
-2. Ensure you have [Sass, Node and Grunt installed](#dependencies), as Statix needs these dependencies to operate.
-3. Install the project dependencies by running `npm install` from the root of the directory.
-4. Run `grunt serve`.  This will build your project for the first time and use the connect module to start a static web server for your templates.
-5. Build your templates using Statix!
+2. Ensure you have [Node and Grunt installed globally on your machine](#dependencies), as Statix needs these before you can use it.
+3. Run `npm install` from the root of the directory, to install the projects local dependencies.
+4. Run `grunt serve`.  This will build your project for the first time and use [BrowserSync](https://www.npmjs.com/package/browser-sync) to spin-up a static web server for your project.
+5. Start writing your templates using Statix!
 
 Compiled template files are created in the `/dist` folder at the root of the project, and this can be changed in the Gruntfile if you would rather compile elsewhere.
 
@@ -92,26 +91,28 @@ Source maps are also created for both the Javascript and Sass. Javascript is com
 
 <div id="dependencies"></div>
 
-## Installing Statix dependencies
+## Required dependencies
 
-* Install Node from [nodejs.org](http://nodejs.org/)
-* Install Grunt CLI - `npm install -g grunt-cli`
+* Node – Install from [nodejs.org](http://nodejs.org/)
+* Grunt CLI - Install by entering `npm install -g grunt-cli` on the command line
 
-Once these dependencies are installed, see 'Getting started with Statix' for instructions on running your project.
+Once these dependencies are installed, see the [Getting Started section]](#getting-started) for instructions on running your project.
 
 
 ---
 
 ## Further documentation and demos
 
-Statix is a combination of three tools; [Assemble](http://assemble.io/), [Kickoff](http://trykickoff.github.io/kickoff/) and [Grunt](http://gruntjs.com/).  The documentation for these tools should be looked at for extending the base setup of Statix.
+Statix is a combination of three tools; [Assemble](http://assemble.io/), [Kickoff](http://trykickoff.github.io/kickoff/) and [Grunt](http://gruntjs.com/).  Checkout their excellent documentation for help if you need to extend Statix.
 
-*  See the [Kickoff documentation](http://trykickoff.github.io/kickoff/) for all demos and information relating to Kickoff
+*  See the [Kickoff documentation](http://trykickoff.github.io/kickoff/) for all demos and information relating to Kickoff.
 *  Check out the [Assemble documentation](http://assemble.io/docs/) for more information on Assemble.
-* Read the excellent [Getting started guide](http://gruntjs.com/getting-started) to make a start with Grunt.
+* Read the excellent [Getting started guide](http://gruntjs.com/getting-started) for Grunt.
 
 
 ---
+
+<div id="alt-frameworks"></div>
 
 ## Using your own front-end framework
 

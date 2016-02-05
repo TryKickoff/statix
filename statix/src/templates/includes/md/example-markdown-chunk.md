@@ -1,7 +1,3 @@
-This is a very brief guide detailing how to use Markdown in your assemble project
-
----
-
 ### Including Markdown in your template files
 
 If you would like to use Markdown in your static template files, there are a number of ways to do so.
