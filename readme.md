@@ -127,7 +127,7 @@ Delete the files in the /assets/src/scss folder, replacing them with your framew
 
 Next, go to `/_grunt-configs/config.js` in the root of the project and change the name of the compiled `distFile` to whatever you want to.
 
-Finally, change the reference to the compiled CSS file in the `html_start.hbs` in `statix/src/templates/includes`
+Finally, change the reference to the compiled CSS file in the `html_start.hbs` in `statix/src/templates/partials`
 
 ### To replace the JS
 

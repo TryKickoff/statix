@@ -2,4 +2,4 @@
 # Global Site variables
 ###
 
-markdownDir: ./statix/src/templates/includes/md/
+markdownDir: ./statix/src/templates/partials/md/

@@ -63,7 +63,7 @@ module.exports.tasks = {
 				'<%= config.statix.dir%>/src/helpers/helper-*.js'
 			],
 
-			partials: ['<%= config.statix.dir%>/src/templates/includes/**/*.hbs'],
+			partials: ['<%= config.statix.dir%>/src/templates/partials/**/*.hbs'],
 			flatten: false,
 
 			layout: 'default.hbs',
