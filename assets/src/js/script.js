@@ -1,31 +1,25 @@
-/*	Author:
-		TMW - (Author Name Here)
-*/
+/**
+ * Project Name:
+ * @description
+ * @author
+ *
+ * Need help using JSDoc? Find out more at http://usejsdoc.org/
+ */
 
-// --------------------------------------------- //
-// DEFINE GLOBAL LIBS                            //
-// --------------------------------------------- //
-// Uncomment the line below to expose jQuery as a global object to the usual places
-// window.jQuery = window.$ = require('./libs/jquery/jquery-1.10.2.js');
+'use-strict';
 
-// force compilation of global libs that don't return a value.
-require("./helpers/log");
-require("./helpers/shims");
+// npm modules
+import ready from 'lite-ready';
 
-//initialise KO object
-var KO = {};
+// Bundle global libs that don't return a value
+import 'console';
 
-KO.Config = {
-	variableX : '', // please don't keep me - only for example syntax!
-
-	init : function () {
-		console.debug('Kickoff is running');
-
-		// Example module include
-		KO.UI = require('./modules/UI');
-		KO.UI.init();
-	}
-};
+// Add your project-specific modules here
+// import moduleTest from './modules/moduleTest';  // this is a test, uncomment this line to try it
 
 
-KO.Config.init();
+// Your DOM ready code goes in here
+ready(() => {
+	// moduleTest(); // this is a test, uncomment this line to try it
+
+});
