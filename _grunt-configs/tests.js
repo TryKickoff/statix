@@ -33,21 +33,6 @@ module.exports.tasks = {
 
 
 	/**
-	 * Grunt Photobox
-	 * https://github.com/stefanjudis/grunt-photoBox
-	 * Visual regression testing tool
-	 */
-	photobox: {
-		task: {
-			options: {
-			screenSizes : '<%=config.testing.visual.sizes%>',
-			urls        : '<%=config.testing.visual.urls%>'
-			}
-		}
-	},
-
-
-	/**
 	 * Grunt Validation
 	 * https://github.com/praveenvijayan/grunt-html-validation
 	 * W3C html validation grunt plugin
