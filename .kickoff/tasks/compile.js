@@ -10,4 +10,5 @@ gulp.task('compile', [
 	'images',
 	'svg',
 	'copy',
+	'assemble'
 ]);

@@ -67,6 +67,7 @@ gulp.task('css', () => {
 		)
 
 		// Write file
-		.pipe(gulp.dest(`${config.css.distDir}`));
+		.pipe(gulp.dest(`${config.css.distDir}`))
+		.pipe(gulp.dest(`${config.statix.dir}${config.statix.assetsDir}${config.statix.cssDir}`) );
 });
 

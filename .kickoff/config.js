@@ -63,18 +63,18 @@ const ConfigOptions = function () {
 	};
 
 	config.gulp = {
-    onError : function (err) {
-        gutil.beep();
-        gutil.log();
-        gutil.log( gutil.colors.red.bold('-----------------------------------------------------------------------') );
-        gutil.log( gutil.colors.red.bold(err) );
+		onError : function (err) {
+				gutil.beep();
+				gutil.log();
+				gutil.log( gutil.colors.red.bold('-----------------------------------------------------------------------') );
+				gutil.log( gutil.colors.red.bold(err) );
 
-        if (gutil.env.prod && err.status === 1) {
-            process.exit(1);
-        }
+				if (gutil.env.prod && err.status === 1) {
+						process.exit(1);
+				}
 
-        this.emit('end');
-    }
+				this.emit('end');
+		}
 	};
 
 	config.statix = {
@@ -88,8 +88,8 @@ const ConfigOptions = function () {
 		imgDir: '/img',
 		fontsDir: '/fonts',
 
-    dataDir: '/data',
-    helpersDir: '/helpers',
+		dataDir: '/data',
+		helpersDir: '/helpers',
 		templateDir: '/templates',
 
 		isProd: (gutil.env.prod ? true : false)
