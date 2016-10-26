@@ -1,23 +1,47 @@
 {
   "name": "statix",
   "title": "Statix",
-  "description": "Making the process of creating static HTML templates even quicker and easier.",
+  "description": "A Tool for creating Static Sites and Component Libraries.",
   "version": "3.0.0",
   "homepage": "https://github.com/TryKickoff/statix",
+  "repo": "https://github.com/trykickoff/statix/",
   "authors": [
     {
       "name": "Ashley Nolan",
-      "url": "http://ashleynolan.co.uk"
+      "url": "https://ashleynolan.co.uk"
     },
     {
       "name": "Zander Martineau",
       "url": "http://martineau.tv"
-    },
-    {
-      "name": "Contributors",
-      "url": "https://github.com/TryKickoff/statix/graphs/contributors"
     }
   ],
+  "contributors": [
+    "Github contributors <https://github.com/trykickoff/statix/graphs/contributors>"
+  ],
+  "scripts": {
+    "prestart": "npm prune && npm install",
+    "start": "gulp serve",
+    "predeploy": "npm prune && npm install --no-optional",
+    "deploy": "RELEASE=true gulp compile",
+    "info": "npm-scripts-info",
+    "commit": "git-cz",
+    "test": "npm run lint:js && npm run lint:css",
+    "lint:js": "xo",
+    "lint:css": "gulp test:css",
+    "fix:js": "xo --fix",
+    "release-patch": "release-it --non-interactive patch",
+    "release-minor": "release-it --non-interactive minor",
+    "release-major": "release-it --non-interactive major"
+  },
+  "scripts-info": {
+    "test": "Run tests",
+    "start": "Open starter checklist on trykickoff.com",
+    "deploy": "Compile all assets for production deployment",
+    "commit": "Commit using our standard git commit message format",
+    "lint:js": "Lint JS using xo",
+    "fix:js": "Fix JS linting issues using xo",
+    "lint:css": "Lint CSS"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/TryKickoff/statix.git"
@@ -27,45 +51,130 @@
   },
   "license": "MIT",
   "engines": {
-    "node": ">=0.11"
+    "node": ">=4.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "console": "^0.5.2",
+    "copy-js": "^0.1.1",
+    "double-dollar": "^1.0.0",
+    "include-media": "^1.4.8",
+    "kickoff-fluidVideo.css": "^1.1.0",
+    "kickoff-grid.css": "^1.0.1",
+    "kickoff-utils.scss": "^2.0.1",
+    "kickoff-welcome.js": "^1.1.0",
+    "lite-ready": "^1.0.4",
+    "normalize.css": "^5.0.0",
+    "svg4everybody": "^2.1.0"
+  },
   "devDependencies": {
-    "cookies-js": "^1.2.1",
-    "glob": "^6.0.4",
-    "grunt": "^0.4.5",
-    "grunt-assemble": "^0.4.0",
-    "grunt-autoprefixer": "^3.0.0",
-    "grunt-browser-sync": "^2.1.3",
-    "grunt-browserify": "^4.0.1",
-    "grunt-contrib-clean": "^0.7.0",
-    "grunt-contrib-copy": "^0.8.0",
-    "grunt-contrib-imagemin": "^1.0.0",
-    "grunt-contrib-jshint": "^0.12.0",
-    "grunt-contrib-watch": "^0.6.1",
-    "grunt-csso": "^0.8.1",
-    "grunt-html-validation": "^0.1.18",
-    "grunt-newer": "^1.1.0",
-    "grunt-photobox": "^0.8.1",
-    "grunt-sass": "^1.0.0",
-    "grunt-scss-lint": "^0.3.6",
-    "grunt-shell": "^1.1.2",
-    "grunt-shimly": "^1.0.1",
+    "assemble": "^0.17.1",
+    "autoprefixer": "^6.4.0",
+    "babel-core": "^6.13.2",
+    "babel-loader": "^6.2.5",
+    "babel-plugin-transform-object-assign": "^6.8.0",
+    "babel-preset-es2015": "^6.9.0",
+    "cssnano": "^3.7.3",
+    "del": "^2.2.1",
+    "doiuse": "^2.4.1",
+    "filesizegzip": "^2.0.0",
+    "gulp": "^3.9.1",
+    "gulp-banner": "^0.1.3",
+    "gulp-debug": "^2.1.2",
+    "gulp-extname": "^0.2.2",
+    "gulp-if": "2.0.1",
+    "gulp-imagemin": "^3.0.3",
+    "gulp-plumber": "^1.1.0",
+    "gulp-postcss": "^6.1.1",
+    "gulp-rename": "1.2.2",
+    "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-stylelint": "^3.0.0",
+    "gulp-svgmin": "^1.2.2",
+    "gulp-svgstore": "6.0.0",
+    "gulp-tap": "^0.1.3",
+    "gulp-util": "^3.0.7",
     "helper-markdown": "^0.2.1",
-    "helper-md": "^0.1.0",
-    "imagemin-gifsicle": "^4.1.0",
-    "imagemin-mozjpeg": "^5.1.0",
-    "imagemin-pngquant": "^4.1.0",
-    "load-grunt-configs": "^0.4.3",
-    "load-grunt-tasks": "^3.1.0",
-    "opn": "^4.0.0",
-    "swiftclick": "^1.1.5",
-    "trak.js": "^0.5.0",
-    "uglifyify": "^3.0.1"
+    "helper-md": "^0.2.1",
+    "imagemin-pngquant": "^5.0.0",
+    "imagemin-svgo": "^5.2.0",
+    "node-sass": "^3.8.0",
+    "postcss-bem-linter": "^2.5.1",
+    "postcss-flexbugs-fixes": "^2.0.0",
+    "postcss-reporter": "^1.4.1",
+    "postcss-scss": "^0.3.0",
+    "stylelint": "^7.1.0",
+    "stylelint-config-standard": "^13.0.0",
+    "stylelint-selector-bem-pattern": "^1.0.0",
+    "webpack": "^1.13.1",
+    "webpack-closure-compiler": "^2.0.2",
+    "xo": "^0.16.0"
   },
-  "keywords": [],
-  "scripts": {
-    "kickoff": "grunt start",
-    "prekickoff": "npm install -g grunt-cli && npm install"
+  "optionalDependencies": {
+    "browser-sync": "^2.13.0",
+    "commitizen": "^2.8.2",
+    "cz-conventional-changelog": "^1.1.6",
+    "npm-scripts-info": "^0.3.6",
+    "release-it": "2.4.0",
+    "opn": "^4.0.2",
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-hot-middleware": "^2.12.2"
+  },
+  "keywords": [
+    "statix",
+    "kickoff",
+    "static site generator",
+    "⚽"
+  ],
+  "babel": {
+    "presets": [
+      "es2015"
+    ],
+    "plugins": [
+      "transform-object-assign"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "xo": {
+    "esnext": true,
+    "global": [
+      "window"
+    ],
+    "ignores": [
+      "**/assets/src/js/standalone/**/*.js",
+      "**/assets/dist/**/*.js",
+      ".kickoff/**/*.js",
+      "gulpfile.js"
+    ],
+    "rules": {
+      "comma-dangle": [
+        "error",
+        "always-multiline"
+      ],
+      "xo/filename-case": [
+        "error",
+        {
+          "case": "camelCase"
+        }
+      ]
+    }
+  },
+  "stylelint": {
+    "extends": "stylelint-config-standard",
+    "rules": {
+      "indentation": [
+        "tab",
+        {
+          "except": [
+            "value"
+          ]
+        }
+      ],
+      "max-empty-lines": 2
+    }
   }
 }

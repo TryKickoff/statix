@@ -1,18 +1,20 @@
 # humanstxt.org/
 # The humans responsible & technology colophon
 
-# TEAM
+# KICKOFF TEAM
 
-    Ashley Nolan     -- @AshNolan_
     Zander Martineau -- @MrMartineau
+    Ashley Nolan     -- @AshNolan_
+    Contributors     -- https://github.com/TryKickoff/kickoff/graphs/contributors
+
 
 # TECHNOLOGY COLOPHON
 
-    Assemble
+		Assemble
     HTML
     CSS
     Sass
-    Grunt.js
-    Bower
-    Normalize.css, jQuery, Modernizr
+    Gulp
     BrowserSync
+    NPM
+    Webpack

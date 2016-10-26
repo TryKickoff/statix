@@ -1,26 +1,54 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--><html class="no-js"> <!--<![endif]-->
+<html class="no-js" lang="en">
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
 		<title>Statix{{#if docs}} – Documentation{{/if}}</title>
 		<meta name="description" content="">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<!-- Built with Kickoff - trykickoff.github.io -->
+		<!--
+			██╗  ██╗██╗ ██████╗██╗  ██╗ ██████╗ ███████╗███████╗
+			██║ ██╔╝██║██╔════╝██║ ██╔╝██╔═══██╗██╔════╝██╔════╝
+			█████╔╝ ██║██║     █████╔╝ ██║   ██║█████╗  █████╗
+			██╔═██╗ ██║██║     ██╔═██╗ ██║   ██║██╔══╝  ██╔══╝
+			██║  ██╗██║╚██████╗██║  ██╗╚██████╔╝██║     ██║
+			╚═╝  ╚═╝╚═╝ ╚═════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝
 
-		<!--[if lte IE 8]>
-			<link rel="stylesheet" href="css/kickoff-old-ie.css">
-		<![endif]-->
-		<!--[if gt IE 8]><!-->
-			<link rel="stylesheet" href="/assets/css/kickoff.css">
-		<!--<![endif]-->
+			Built with Kickoff & Statix - trykickoff.com & trykickoff.com/statix
+		-->
+
+		<link rel="stylesheet" href="/assets/css/kickoff.css">
 
 		{{#if docs}}
 			<link rel="stylesheet" href="/assets/css/styleguide.css">
 		{{/if}}
 
+		<!-- For mobile icons & social metatags etc, see http://trykickoff.com/learn/html.html#socialmeta -->
+
+		<script>
+			var win = window, doc = win.document, docElem = doc.documentElement;
+
+			// Replace 'no-js'/'js' class on <html>
+			docElem.className = docElem.className.replace(/\bno-js\b/g, '') + ' js ';
+
+			/*
+				Dynamically load scripts / cutting the mustard test
+				https://gist.github.com/nicbell/9a9c919e6d69aff47e285945550b445c
+			*/
+		</script>
+
+		<!-- Configure Polyfills https://cdn.polyfill.io/ -->
+		<script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+
+		<!-- Feature detection for CSS hooks -->
 		<script src="/assets/js/libs/modernizr.min.js"></script>
 	</head>
 	<body>
+		<div class="skipToContent">
+			<a href="#main" class="btn btn--primary">Skip to main content</a>
+		</div>
+
+		<!--[if lte IE 9]>
+			<div class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+		<![endif]-->

@@ -1,27 +1,55 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--><html class="no-js"> <!--<![endif]-->
+<html class="no-js" lang="en">
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
 		<title>Statix – Documentation</title>
 		<meta name="description" content="">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<!-- Built with Kickoff - trykickoff.github.io -->
+		<!--
+			██╗  ██╗██╗ ██████╗██╗  ██╗ ██████╗ ███████╗███████╗
+			██║ ██╔╝██║██╔════╝██║ ██╔╝██╔═══██╗██╔════╝██╔════╝
+			█████╔╝ ██║██║     █████╔╝ ██║   ██║█████╗  █████╗
+			██╔═██╗ ██║██║     ██╔═██╗ ██║   ██║██╔══╝  ██╔══╝
+			██║  ██╗██║╚██████╗██║  ██╗╚██████╔╝██║     ██║
+			╚═╝  ╚═╝╚═╝ ╚═════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝
 
-		<!--[if lte IE 8]>
-			<link rel="stylesheet" href="css/kickoff-old-ie.css">
-		<![endif]-->
-		<!--[if gt IE 8]><!-->
-			<link rel="stylesheet" href="/assets/css/kickoff.css">
-		<!--<![endif]-->
+			Built with Kickoff & Statix - trykickoff.com & trykickoff.com/statix
+		-->
+
+		<link rel="stylesheet" href="/assets/css/kickoff.css">
 
 			<link rel="stylesheet" href="/assets/css/styleguide.css">
 
+		<!-- For mobile icons & social metatags etc, see http://trykickoff.com/learn/html.html#socialmeta -->
+
+		<script>
+			var win = window, doc = win.document, docElem = doc.documentElement;
+
+			// Replace 'no-js'/'js' class on <html>
+			docElem.className = docElem.className.replace(/\bno-js\b/g, '') + ' js ';
+
+			/*
+				Dynamically load scripts / cutting the mustard test
+				https://gist.github.com/nicbell/9a9c919e6d69aff47e285945550b445c
+			*/
+		</script>
+
+		<!-- Configure Polyfills https://cdn.polyfill.io/ -->
+		<script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+
+		<!-- Feature detection for CSS hooks -->
 		<script src="/assets/js/libs/modernizr.min.js"></script>
 	</head>
 	<body>
+		<div class="skipToContent">
+			<a href="#main" class="btn btn--primary">Skip to main content</a>
+		</div>
+
+		<!--[if lte IE 9]>
+			<div class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+		<![endif]-->
 
 	 <div class="l-container sg-page">
 		<!-- header partial -->
@@ -29,7 +57,7 @@
 		<!--  === Masthead ===  -->
 		<!--  ==============  -->
 		<header class="masthead" role="banner">
-			<h1 class="sg-sectionHeading">Using Markdown in Statix</h1>
+			<h1 class="sg-sectionHeading"></h1>
 		</header>
 
 		<!--  ====================  -->
@@ -37,34 +65,31 @@
 		<!--  ====================  -->
 		<div role="main">
 
-			
-
 <p>This is a very brief guide detailing how to use Markdown in your assemble project</p>
 <hr>
-<h3 id="including-markdown-in-your-template-files">Including Markdown in your template files</h3>
+<h3>Including Markdown in your template files</h3>
 <p>If you would like to use Markdown in your static template files, there are a number of ways to do so.</p>
 <p>You can either assign your markdown to a YFM variable – if you look at the underlying code for this page, this section of the document does this.</p>
 <hr>
 <p>The easiest way to use markdown in your templates is by looking at how this page, and the other documentation pages, do so.  They use the a handlebars helper so that you can wrap markdown like this:</p>
 <pre><code>{{#markdown}}
 …
-{{/markdown}}</code></pre>
+{{/markdown}}
+</code></pre>
 <hr>
 <p>This will then generate HTML from any markdown inside these tags.</p>
-<h3 id="using-markdown-to-generate-your-html-content">Using Markdown to generate your HTML content</h3>
+<h3>Using Markdown to generate your HTML content</h3>
 <p>Markdown has extensive documentation online explaining how to generate HTML content using it’s shorthand syntax.</p>
 
 
 		</div>
 
-		
 				<!--  ==============  -->
 				<!--  === Footer ===  -->
 				<!--  ==============  -->
 				<footer class="footer" role="contentinfo">
 		
 				</footer>	</div>
-
 
 		<!-- JavaScript at the bottom for fast page loading -->
 
