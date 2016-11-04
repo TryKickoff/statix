@@ -6,13 +6,22 @@ const gulp = require('gulp');
 const runSequence = require('run-sequence');
 
 gulp.task('watch', ['compile'], () => {
-	gulp.watch([`${config.css.scssDir}/**/*.scss`], ['css']);
-	gulp.watch([`${config.svg.srcDir}/**/*`], ['svg']);
-	gulp.watch([`${config.img.srcDir}/**/*`], function (event) {
+	gulp.watch(['**/*.scss'], { cwd: config.css.scssDir }, ['css'])
+		.on('change', config.gulp.onChange);
+
+	gulp.watch(['**/*'], { cwd: config.svg.srcDir }, ['svg'])
+		.on('change', config.gulp.onChange);
+
+	gulp.watch(['**/*'], { cwd: config.img.srcDir }, , function (event) {
 		runSequence('images', 'copy:statixImg');
-	});
-	gulp.watch(`${config.js.srcDir}/**/*.js`, ['javascript']);
-	gulp.watch(`${config.statix.dir}/**/*.{md,hbs}`, ['assemble']);
+	})
+	.on('change', config.gulp.onChange);
+
+	gulp.watch('**/*.js', { cwd: config.js.srcDir }, ['javascript'])
+		.on('change', config.gulp.onChange);
+
+	gulp.watch('**/*.{md,hbs}', { cwd: config.statix.dir }, ['assemble'])
+		.on('change', config.gulp.onChange);
 });
 
 // Alias of watch task

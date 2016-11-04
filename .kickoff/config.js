@@ -63,6 +63,10 @@ const ConfigOptions = function () {
 	};
 
 	config.gulp = {
+		// Reports which file was changed
+    onChange : function(evt) {
+        gutil.log( gutil.colors.cyan.bold('❯❯ File: ' + evt.path.replace(new RegExp('/.*(?=/' + config.srcDir.substr(2) + ')/'), '')), 'was', gutil.colors.magenta(evt.type) );
+    }
 		onError : function (err) {
 				gutil.beep();
 				gutil.log();

@@ -1,0 +1,4 @@
+{
+  "_comment": "Global site data – the below would be exposed as {{site.imgDir}} in templates",
+  "markdownDir": "./statix/src/templates/partials/md/"
+}
