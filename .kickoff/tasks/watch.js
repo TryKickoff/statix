@@ -12,7 +12,7 @@ gulp.task('watch', ['compile'], () => {
 	gulp.watch(['**/*'], { cwd: config.svg.srcDir }, ['svg'])
 		.on('change', config.gulp.onChange);
 
-	gulp.watch(['**/*'], { cwd: config.img.srcDir }, , function (event) {
+	gulp.watch(['**/*'], { cwd: config.img.srcDir }, function (event) {
 		runSequence('images', 'copy:statixImg');
 	})
 	.on('change', config.gulp.onChange);
