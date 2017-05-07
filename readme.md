@@ -77,8 +77,8 @@ Should you wish to rip out the CSS (or SCSS) and JS and replace it with a struct
 ## Getting started with Statix
 
 1. Download or clone the git repo. To clone run `git clone https://github.com/TryKickoff/statix.git your-project-folder`
-2. Ensure you have [Node and Grunt installed globally on your machine](#dependencies), as Statix needs these before you can use it.
-3. Run `npm install` from the root of the directory, to install the projects local dependencies.
+2. Ensure you have [Node, Yarn and Gulp installed globally on your machine](#dependencies), as Statix needs these before you can use it.
+3. Run `yarn install` from the root of the directory, to install the projects local dependencies.
 4. Run `grunt serve`.  This will build your project for the first time and use [BrowserSync](https://www.npmjs.com/package/browser-sync) to spin-up a static web server for your project.
 5. Start writing your templates using Statix!
 
@@ -94,7 +94,8 @@ Source maps are also created for both the Javascript and Sass. Javascript is com
 ## Required dependencies
 
 * Node – Install from [nodejs.org](http://nodejs.org/)
-* Grunt CLI - Install by entering `npm install -g grunt-cli` on the command line
+* Yarn - If on MacOS `brew install yarn` for other platforms see [yarnpkg.com](https://yarnpkg.com/lang/en/docs/install/)
+* Gulp CLI - Install by entering `npm install gulp-cli -g` on the command line
 
 Once these dependencies are installed, see the [Getting Started section]](#getting-started) for instructions on running your project.
 
@@ -103,11 +104,11 @@ Once these dependencies are installed, see the [Getting Started section]](#getti
 
 ## Further documentation and demos
 
-Statix is a combination of three tools; [Assemble](http://assemble.io/), [Kickoff](http://trykickoff.github.io/kickoff/) and [Grunt](http://gruntjs.com/).  Checkout their excellent documentation for help if you need to extend Statix.
+Statix is a combination of three tools; [Assemble](http://assemble.io/), [Kickoff](http://trykickoff.github.io/kickoff/) and [Gulp](http://gulpjs.com/).  Checkout their excellent documentation for help if you need to extend Statix.
 
 *  See the [Kickoff documentation](http://trykickoff.github.io/kickoff/) for all demos and information relating to Kickoff.
 *  Check out the [Assemble documentation](http://assemble.io/docs/) for more information on Assemble.
-* Read the excellent [Getting started guide](http://gruntjs.com/getting-started) for Grunt.
+*  Read [Gulp Docs](https://github.com/gulpjs/gulp/tree/master/docs) for GulpJS.
 
 
 ---
