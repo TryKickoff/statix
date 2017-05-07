@@ -3,7 +3,6 @@
  */
 const config = require('../config');
 const gulp = require('gulp');
-const runSequence = require('run-sequence');
 
 gulp.task('watch', ['compile'], () => {
 	gulp.watch(['**/*.scss'], { cwd: config.css.scssDir }, ['css'])
@@ -12,10 +11,8 @@ gulp.task('watch', ['compile'], () => {
 	gulp.watch(['**/*'], { cwd: config.svg.srcDir }, ['svg'])
 		.on('change', config.gulp.onChange);
 
-	gulp.watch(['**/*'], { cwd: config.img.srcDir }, function (event) {
-		runSequence('images', 'copy:statixImg');
-	})
-	.on('change', config.gulp.onChange);
+	gulp.watch(['**/*'], { cwd: config.img.srcDir }, ['images'])
+		.on('change', config.gulp.onChange);
 
 	gulp.watch('**/*.js', { cwd: config.js.srcDir }, ['javascript'])
 		.on('change', config.gulp.onChange);

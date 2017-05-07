@@ -53,7 +53,9 @@
   Temporary – have asked if the maintainers are planning on making the normalize module Eyeglass compatible
 	See issue https://github.com/necolas/normalize.css/issues/638
 **/
-@import "../../../node_modules/normalize.css/normalize.css"; // https://github.com/necolas/normalize.css
+@import "normalize";
+// https://github.com/necolas/normalize.css
+// https://github.com/JohnAlbin/normalize-scss (Sass port of normalize.css)
 
 /**
  * Typography styles

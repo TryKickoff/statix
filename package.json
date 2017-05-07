@@ -54,73 +54,58 @@
     "node": ">=4.0"
   },
   "dependencies": {
-    "console": "^0.5.2",
-    "copy-js": "^0.1.1",
-    "double-dollar": "^1.0.0",
-    "include-media": "^1.4.8",
-    "kickoff-fluidVideo.css": "^1.1.0",
-    "kickoff-grid.css": "^1.0.1",
-    "kickoff-utils.scss": "^2.0.1",
-    "kickoff-welcome.js": "^1.1.0",
-    "lite-ready": "^1.0.4",
-    "normalize.css": "^5.0.0",
-    "svg4everybody": "^2.1.0"
+    "console": "0.5.2",
+    "copy-js": "0.1.1",
+    "double-dollar": "1.0.0",
+    "include-media": "1.4.9",
+    "kickoff-fluidVideo.css": "1.1.0",
+    "kickoff-grid.css": "1.1.2",
+    "kickoff-utils.scss": "2.0.3",
+    "kickoff-welcome.js": "1.4.0",
+    "lite-ready": "1.0.4",
+    "normalize-scss": "6.0.0",
+    "svg4everybody": "2.1.8"
   },
   "devDependencies": {
-    "assemble": "^0.17.1",
+    "assemble": "0.23.0",
     "autoprefixer": "^6.4.0",
-    "babel-core": "^6.13.2",
-    "babel-loader": "^6.2.5",
-    "babel-plugin-transform-object-assign": "^6.8.0",
-    "babel-preset-es2015": "^6.9.0",
-    "cssnano": "^3.7.3",
-    "del": "^2.2.1",
+    "babel-core": "6.24.1",
+    "babel-loader": "7.0.0",
+    "babel-plugin-transform-object-assign": "6.22.0",
+    "babel-preset-es2015": "6.24.1",
+    "browser-sync": "2.18.8",
+    "case-sensitive-paths-webpack-plugin": "2.0.0",
+    "cssnano": "3.10.0",
+    "del": "2.2.2",
     "doiuse": "^2.4.1",
     "expand": "^0.4.3",
-    "filesizegzip": "^2.0.0",
-    "gulp": "^3.9.1",
-    "gulp-banner": "^0.1.3",
+    "eyeglass": "1.2.1",
+    "filesizegzip": "2.0.0",
+    "gulp": "3.9.1",
+    "gulp-banner": "0.1.3",
     "gulp-debug": "^2.1.2",
     "gulp-extname": "^0.2.2",
     "gulp-if": "2.0.1",
-    "gulp-imagemin": "^3.0.3",
+    "gulp-imagemin": "3.2.0",
     "gulp-plumber": "^1.1.0",
-    "gulp-postcss": "^6.1.1",
-    "gulp-rename": "1.2.2",
-    "gulp-sass": "^2.3.2",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-stylelint": "^3.0.0",
-    "gulp-svgmin": "^1.2.2",
-    "gulp-svgstore": "6.0.0",
-    "gulp-tap": "^0.1.3",
-    "gulp-util": "^3.0.7",
+    "gulp-postcss": "6.4.0",
+    "gulp-sass": "3.1.0",
+    "gulp-sourcemaps": "^2.4.1",
+    "gulp-stylelint": "3.9.0",
+    "gulp-svgmin": "1.2.3",
+    "gulp-svgstore": "6.1.0",
+    "gulp-tap": "1.0.1",
+    "gulp-util": "3.0.8",
     "helper-markdown": "^0.2.1",
     "helper-md": "^0.2.1",
-    "imagemin-pngquant": "^5.0.0",
-    "imagemin-svgo": "^5.2.0",
-    "node-sass": "^3.8.0",
-    "postcss-bem-linter": "^2.5.1",
-    "postcss-flexbugs-fixes": "^2.0.0",
-    "postcss-reporter": "^1.4.1",
-    "postcss-scss": "^0.3.0",
-    "run-sequence": "^1.2.2",
-    "stylelint": "^7.1.0",
-    "stylelint-config-standard": "^13.0.0",
-    "stylelint-selector-bem-pattern": "^1.0.0",
-    "webpack": "^1.13.1",
-    "webpack-closure-compiler": "^2.0.2",
-    "xo": "^0.16.0"
-  },
-  "optionalDependencies": {
-    "browser-sync": "^2.13.0",
-    "commitizen": "^2.8.2",
-    "cz-conventional-changelog": "^1.1.6",
-    "npm-scripts-info": "^0.3.6",
-    "release-it": "2.4.0",
-    "opn": "^4.0.2",
-    "webpack-dev-middleware": "^1.6.1",
-    "webpack-dev-server": "^1.14.1",
-    "webpack-hot-middleware": "^2.12.2"
+    "imagemin-pngquant": "5.0.0",
+    "opn": "5.0.0",
+    "postcss-flexbugs-fixes": "2.1.1",
+    "release-it": "^2.5.4",
+    "stylelint": "7.10.1",
+    "stylelint-config-standard": "16.0.0",
+    "webpack": "2.5.0",
+    "xo": "0.19.0"
   },
   "keywords": [
     "statix",
@@ -130,16 +115,16 @@
   ],
   "babel": {
     "presets": [
-      "es2015"
+      [
+        "es2015",
+        {
+          "modules": false
+        }
+      ]
     ],
     "plugins": [
       "transform-object-assign"
     ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
   },
   "xo": {
     "esnext": true,
@@ -158,10 +143,7 @@
         "always-multiline"
       ],
       "xo/filename-case": [
-        "error",
-        {
-          "case": "camelCase"
-        }
+        "off"
       ]
     }
   },
@@ -173,6 +155,29 @@
         {
           "except": [
             "value"
+          ]
+        }
+      ],
+      "at-rule-empty-line-before": [
+        "always",
+        {
+          "ignore": [
+            "blockless-after-same-name-blockless",
+            "blockless-group"
+          ]
+        }
+      ],
+      "declaration-empty-line-before": [
+        "never"
+      ],
+      "rule-non-nested-empty-line-before": [
+        "always-multi-line",
+        {
+          "except": [
+            "after-single-line-comment"
+          ],
+          "ignore": [
+            "after-comment"
           ]
         }
       ],

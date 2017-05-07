@@ -3,7 +3,7 @@
  */
 const path = require('path');
 const webpack = require('webpack');
-const ClosureCompilerPlugin = require('webpack-closure-compiler');
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const config = require('../config');
 
 const webpackConfig = {
@@ -13,49 +13,52 @@ const webpackConfig = {
 		publicPath: path.resolve(`${config.js.distDir}/`) + '/',
 		filename: '[name].js',
 	},
-	devServer: {
-		inline: true,
-		port: 3000,
-		stats: 'errors-only',
+	stats: {
+		colors: true,
+		modules: true,
+		reasons: true,
+		errorDetails: true,
 	},
 	module: {
-		loaders: [
+		rules: [
 			{
 				test: /\.js$/,
 				exclude: /node_modules/,
-				loader: 'babel',
+				loader: 'babel-loader',
+				query: {
+					cacheDirectory: true,
+				},
 			},
 		],
 	},
-	plugins: [],
+	devtool: 'source-map', // Source maps
+	plugins: [
+		// Watcher doesn't work well if you mistype casing in a path so we use
+		// a plugin that prints an error when you attempt to do this.
+		// See https://github.com/facebookincubator/create-react-app/issues/240
+		new CaseSensitivePathsPlugin(),
+	],
 };
 
-if (process.env.RELEASE) {
+/**
+ * The below plugins are used when the `--release` flag is used
+ * - minification using uglify
+ * - add a banner using the banner plugin
+ */
+if (config.isRelease) {
 	webpackConfig.plugins.push(
-		new webpack.optimize.DedupePlugin(),
-
-		// Reduce React builds by using the production flag
-		new webpack.DefinePlugin({
-			'process.env': {
-				NODE_ENV: JSON.stringify('production'),
+		// Minify the code using Uglify
+		new webpack.optimize.UglifyJsPlugin({
+			output: {
+				comments: false,
 			},
 		}),
 
-		new ClosureCompilerPlugin({
-			compiler: {
-				language_in: 'ECMASCRIPT6',
-				language_out: 'ECMASCRIPT5',
-				compilation_level: 'ADVANCED',
-			},
-			concurrency: 3,
-		}),
-
-		new webpack.BannerPlugin(config.misc.banner, {
+		new webpack.BannerPlugin({
+			banner: config.misc.banner,
 			raw: true,
 		})
 	);
-} else {
-	webpackConfig.devtool = 'cheap-module-source-map'; // Source maps
 }
 
 module.exports = webpackConfig;
