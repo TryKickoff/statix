@@ -90,6 +90,7 @@ const ConfigOptions = function () {
 		cssDir: '/css',
 		jsDir: '/js',
 		imgDir: '/img',
+		svgDir: '/svg',
 		fontsDir: '/fonts',
 
 		dataDir: '/data',
