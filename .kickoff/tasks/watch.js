@@ -24,7 +24,7 @@ gulp.task('watch', ['compile'], () => {
 	})
 		.on('change', config.gulp.onChange);
 
-	gulp.watch('**/*.{md,hbs}', { cwd: config.statix.dir }, ['assemble'])
+	gulp.watch('**/*.{md,hbs}', { cwd: `${config.statix.dir}${config.statix.srcDir}` }, ['assemble'])
 		.on('change', config.gulp.onChange);
 });
 
