@@ -9,7 +9,7 @@ const webpack = require('webpack');
 const webpackConfig = require('./webpack.config');
 const config = require('../config');
 
-gulp.task('javascript', () => {
+gulp.task('javascript', (done) => {
 	const wpConfig = Object.create(webpackConfig);
 
 	// wpConfig.output.publicPath = './';
@@ -19,5 +19,6 @@ gulp.task('javascript', () => {
 		if (err) {
 			throw new gutil.PluginError('compile', err);
 		}
+		done();
 	});
 });
