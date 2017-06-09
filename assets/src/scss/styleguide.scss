@@ -1,3 +1,9 @@
+// @Author: Rob Harris <robharris>
+// @Date:   9th June 2017, 1:33:28 pm
+// @Email:  rob.harris@analogfolk.com
+// @Last modified by:   robharris
+// @Last modified time: 9th June 2017, 1:34:12 pm
+
 /**
  * Setup styleguide imports
  */
@@ -204,8 +210,8 @@ code {
 
 	&:after {
 		display: block;
-		@extend .interfaceType;
-		@extend .interfaceType-subtle;
+		@extend .sg-interfaceType;
+		@extend .interfaceType-subtle !optional;
 		@include font-size(16);
 		margin-top: 5px;
 		border-top: 1px solid #ddd;
